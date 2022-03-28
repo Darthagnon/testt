@@ -63,6 +63,15 @@ pectora summo.&lt;/p&gt;</description>
     </item>
     
     <item>
+      <title>Hugo Easy Gallery [bugged version]</title>
+      <link>https://example.com/post/heg-bug/</link>
+      <pubDate>Sat, 25 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/post/heg-bug/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Automagical PhotoSwipe image gallery with a one-line shortcode&lt;/em&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Automagical image gallery in Hugo with PhotoSwipe and jQuery</title>
       <link>https://example.com/post/photoswipe/</link>
       <pubDate>Mon, 06 Mar 2017 00:00:00 +0000</pubDate>

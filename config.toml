@@ -3,6 +3,8 @@ languageCode = "en"
 defaultContentLanguage = "en"
 title = "Hugo Theme Dream"
 theme = ["dream", "heg"]
+# ignore stupid error
+ignoreErrors = ["error-missing-instagram-accesstoken"]
 
 # copyright = ""
 
