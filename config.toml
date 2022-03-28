@@ -5,6 +5,8 @@ title = "Hugo Theme Dream"
 theme = ["dream", "heg"]
 # ignore stupid error
 ignoreErrors = ["error-missing-instagram-accesstoken"]
+# recommended for GitHub pages
+publishDir = 'docs'
 
 # copyright = ""
 
