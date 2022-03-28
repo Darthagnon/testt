@@ -17,6 +17,7 @@ publishDir = 'docs'
 # enableRobotsTXT = true
 
 [params]
+CDNJS = false
   background = "#f7f7f7"
   # backgroundImage = "/me/background.jpg"
   linkColor = "seagreen"
