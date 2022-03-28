@@ -1,0 +1,6 @@
+[submodule "themes/heg"]
+	path = themes/heg
+	url = git@github.com:Darthagnon/hugo-easy-gallery.git
+[submodule "themes/dream"]
+	path = themes/dream
+	url = git@github.com:Darthagnon/hugo-theme-dream.git
