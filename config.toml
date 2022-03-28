@@ -3,10 +3,8 @@ languageCode = "en"
 defaultContentLanguage = "en"
 title = "Hugo Theme Dream"
 theme = ["dream", "heg"]
-# ignore stupid error
+
 ignoreErrors = ["error-missing-instagram-accesstoken"]
-# recommended for GitHub pages
-publishDir = 'docs'
 
 # copyright = ""
 
@@ -16,11 +14,13 @@ publishDir = 'docs'
 
 # enableRobotsTXT = true
 
+# recommended for GitHub pages
+publishDir = 'docs'
+
 [markup.goldmark.renderer] 
 unsafe = true 
 
 [params]
-CDNJS = true
   background = "#f7f7f7"
   # backgroundImage = "/me/background.jpg"
   linkColor = "seagreen"
@@ -36,6 +36,7 @@ CDNJS = true
   author = "Yue Yang"
   # description = ""
   avatar = "/img/avatar.jpeg"
+  # roundAvatar = true
   headerTitle = "Hugo Theme Dream"
   motto = "Motto"
   # maxTags = 5
@@ -53,6 +54,7 @@ CDNJS = true
   # LEANCLOUD_APP_KEY = ""
   # VALINE_LANGUAGE = ""
 
+  # socials, deprecated - use /data/socials.toml instead
   email = "g1enyy0ung@gmail.com"
   # twitter = ""
   # facebook = ""
@@ -65,16 +67,25 @@ CDNJS = true
 
   siteStartYear = 2016
 
-  # favicon = "/favicon.ico"
+  favicon = "/favicons/favicon.ico"
 
+  # true: load 3rd-party JS/CSS from CDN; false: load instead from local files
+	CDNJS = false
   # highlightjs = true
   # highlightjsCDN = "https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/highlight.min.js"
+  # highlightjsCDN = "js/3p/highlight.min.js"
   # highlightjsExtraLanguages = ["ocaml"]
   # highlightjsTheme = "gruvbox-light"
   # highlightjsThemeDark = "gruvbox-dark"
 
   # search
   # enableSearch = true
+  
+  # Error 404 Not Found page text
+  error404Header = "Yolo error 404"
+  error404SubHeader = "wassup"
+  
+  OverlayScrollbars = true
 
   # options
   # showSummaryCoverInPost = true
@@ -93,3 +104,10 @@ CDNJS = true
   # [params.experimental]
   #   jsDate = true
   #   jsDateFormat = "yyyy年MM月dd日"
+  
+    [params.advanced]
+    customCSS = ["css/custom.css"] # files in the list will be loaded in order
+  
+  # required for search
+   [outputs]
+     home = ["HTML", "RSS", "JSON"]
