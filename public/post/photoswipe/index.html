@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Automagical image gallery in Hugo with PhotoSwipe and jQuery | Hugo Theme Dream</title>
+
+    
+
+
+<meta http-equiv="Permissions-Policy" content="interest-cohort=()" />
+
+
+<link rel="manifest" href="/manifest.json">
+<link rel="serviceworker" href="/sw.html">
+
+
+
+<meta name="author" content="Yue Yang" />
+<meta name="description" content="" />
+
+
+
+<meta name="generator" content="Hugo 0.96.0" />
+
+<link rel="canonical" href="https://example.com/post/photoswipe/" />
+
+
+<meta property="og:title" content="Automagical image gallery in Hugo with PhotoSwipe and jQuery" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/post/photoswipe/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2017-03-06T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-03-25T00:00:00+00:00" />
+
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Automagical image gallery in Hugo with PhotoSwipe and jQuery"/>
+<meta name="twitter:description" content=""/>
+
+
+
+<link rel="stylesheet" href="/css/3p/semantic.min@2.4.2.css" />
+<link rel="stylesheet" href="/css/icomoon.css" />
+
+<link rel="stylesheet" href="/css/3p/OverlayScrollbars.min@1.13.0.css" />
+
+<link rel="stylesheet" href="/css/3p/github-markdown.min@4.0.0.css" />
+<link rel="stylesheet" href="/css/site.css" />
+
+<style>
+  .ui.header a:not(.item, .ui.button):hover {
+    text-decoration: underline;
+  }
+
+  
+  a:not(.item, .ui.button) {
+    color: seagreen !important;
+  }
+  
+
+  
+
+  
+  body.default {
+    
+    background-color: #f7f7f7;
+    
+
+    
+  }
+  
+
+  
+</style>
+
+
+    
+
+
+
+
+
+
+
+    
+  </head>
+
+  <body class="default">
+    
+<nav class="ui secondary menu dream-menu dream-nav">
+
+  <a class="item dream-flip-toggle" title="Flip it!">
+    <i class="large link question circle icon"></i>
+  </a>
+  <a class="item" href="https://example.com" title="Home">
+    <i class="large link home icon"></i>
+  </a>
+  
+  
+  
+  
+</nav>
+
+    <div class="flip-container">
+      <div class="flipper">
+        <section class="front">
+          <div class="dream-max-width">
+            
+<div class="ui relaxed centered grid dream-grid dream-grid-single">
+  
+  
+  
+  
+
+  
+  <aside class="sixteen wide mobile sixteen wide tablet three wide computer column dream-single-aside">
+    
+    <div class="ui segment toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#new-figure-shortcode">New <code>figure</code> shortcode</a></li>
+    <li><a href="#shortcode-to-enable-photoswipe">Shortcode to enable PhotoSwipe</a></li>
+    <li><a href="#the-javascript">The JavaScript</a></li>
+    <li><a href="#demo-with-individual-images">Demo with individual images</a></li>
+    <li><a href="#one-last-shortcode-to-make-a-gallery">One last shortcode to make a gallery</a></li>
+    <li><a href="#demo-gallery">Demo Gallery</a></li>
+    <li><a href="#dont-forget">Don&rsquo;t forget</a></li>
+    <li><a href="#credits">Credits</a></li>
+  </ul>
+</nav>
+    </div>
+    
+
+    
+  </aside>
+  
+  <div class="sixteen wide mobile sixteen wide tablet ten wide computer column markdown-body dream-single" id="dream-save-post-as-img">
+    <section class="ui segment">
+      <header>
+        <h1 class="ui large header">Automagical image gallery in Hugo with PhotoSwipe and jQuery<span class="sub header">
+            <span class="left">
+              @
+              
+                
+                  <a href="https://www.liwen.id.au/photoswipe/" target="_blank">Li-Wen Yip</a>
+                
+              
+
+              | 
+  
+    Monday, 6 Mar, 2017
+  
+
+
+
+              | 8 minutes read
+
+              
+              | Update at
+                
+  
+    Monday, 6 Mar, 2017
+  
+
+
+              
+            </span>
+
+            
+            <span class="dream-share">
+  <a href="#" class="save-as-image" title="Save as image" onclick="savePostAsImg()">
+    <i class="save icon"></i>
+  </a>
+  <a href="https://twitter.com/intent/tweet?text=Automagical%20image%20gallery%20in%20Hugo%20with%20PhotoSwipe%20and%20jQuery&url=https%3a%2f%2fexample.com%2fpost%2fphotoswipe%2f" title="Twitter">
+    <i class="twitter icon"></i>
+  </a>
+  <a href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fexample.com%2fpost%2fphotoswipe%2f" title="Facebook">
+    <i class="facebook icon"></i>
+  </a>
+  <a href="https://t.me/share/url?url=https%3a%2f%2fexample.com%2fpost%2fphotoswipe%2f&text=Automagical%20image%20gallery%20in%20Hugo%20with%20PhotoSwipe%20and%20jQuery" title="Telegram">
+    <i class="telegram icon"></i>
+  </a>
+</span>
+
+            
+          </span>
+        </h1>
+      </header>
+
+      <article class="main">
+        
+
+        <p>Update 25/03/2017: I’ve combined this PhotoSwipe implementation with a shortcode that generates a responsive css gallery of all the images in a directory - see <a href="/heg">Hugo Easy Gallery</a>.</p>
+<p>There are various solutions for implementing <a href="http://photoswipe.com/">PhotoSwipe</a> in <a href="https://gohugo.io/">Hugo</a>, including <a href="https://github.com/GjjvdBurg/HugoPhotoSwipe">HugoPhotoSwipe</a> and <a href="http://www.thehome.dk/article/photoswipe-gallery-hugo/">Tom Helmer’s blog post</a>, but they all require you group all your images in the once place on the page.</p>
+<p>What I wanted was:</p>
+<ul>
+<li>A lightbox/carousel-style image gallery that loads all of the images in my post, regardless of where in the post they appear;</li>
+<li>Works with any existing images I’ve embedded using the figure shortcode without me having to change anything; and</li>
+<li>Does not require me to <a href="http://photoswipe.com/documentation/faq.html#image-size">pre-define the image sizes</a>;</li>
+</ul>
+<p>I couldn’t find a ready-made solution that met my requirements, so I made my own.</p>
+<p>All the code in this post is available on <a href="https://github.com/liwenyip/hugo-pswp">GitHub</a>.</p>
+<h2 id="new-figure-shortcode">New <code>figure</code> shortcode</h2>
+<p>If all your existing figures already have a <code>link</code> that points to a larger version of the image, then actually Hugo’s built-in <code>figure</code> <a href="https://gohugo.io/extras/shortcodes/#figure">shortcode</a> will work just fine. But if not, we can override the built-in <code>figure</code> shortcode to make it work better with PhotoSwipe:</p>
+<p>Put this file in <code>/layouts/shortcodes/figure.html</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">figure</span> <span style="color:#960050;background-color:#1e0010">{{</span> <span style="color:#a6e22e">with</span> <span style="color:#960050;background-color:#1e0010">.</span><span style="color:#a6e22e">Get</span> <span style="color:#960050;background-color:#1e0010">&#34;</span><span style="color:#a6e22e">class</span><span style="color:#960050;background-color:#1e0010">&#34;</span> <span style="color:#960050;background-color:#1e0010">}}</span><span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{.}}&#34;</span><span style="color:#960050;background-color:#1e0010">{{</span> <span style="color:#a6e22e">end</span> <span style="color:#960050;background-color:#1e0010">}}</span> <span style="color:#a6e22e">itemprop</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;associatedMedia&#34;</span> <span style="color:#a6e22e">itemscope</span> <span style="color:#a6e22e">itemtype</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://schema.org/ImageObject&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{ with .Get &#34;</span><span style="color:#a6e22e">link</span><span style="color:#960050;background-color:#1e0010">&#34;</span> <span style="color:#960050;background-color:#1e0010">}}{{.}}{{</span> <span style="color:#a6e22e">else</span> <span style="color:#960050;background-color:#1e0010">}}{{</span> <span style="color:#960050;background-color:#1e0010">.</span><span style="color:#a6e22e">Get</span> <span style="color:#960050;background-color:#1e0010">&#34;</span><span style="color:#a6e22e">src</span><span style="color:#960050;background-color:#1e0010">&#34;</span> <span style="color:#960050;background-color:#1e0010">}}{{</span> <span style="color:#a6e22e">end</span> <span style="color:#960050;background-color:#1e0010">}}&#34;</span> <span style="color:#960050;background-color:#1e0010">{{</span> <span style="color:#a6e22e">with</span> <span style="color:#960050;background-color:#1e0010">.</span><span style="color:#a6e22e">Get</span> <span style="color:#960050;background-color:#1e0010">&#34;</span><span style="color:#a6e22e">size</span><span style="color:#960050;background-color:#1e0010">&#34;</span> <span style="color:#960050;background-color:#1e0010">}}</span><span style="color:#a6e22e">data-size</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{.}}&#34;</span><span style="color:#960050;background-color:#1e0010">{{</span> <span style="color:#a6e22e">end</span> <span style="color:#960050;background-color:#1e0010">}}</span> <span style="color:#a6e22e">itemprop</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;contentUrl&#34;</span>&gt; 
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">img</span> <span style="color:#a6e22e">itemprop</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;thumbnail&#34;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{ with .Get &#34;</span><span style="color:#a6e22e">src</span><span style="color:#960050;background-color:#1e0010">&#34;</span> <span style="color:#960050;background-color:#1e0010">}}{{.}}{{</span> <span style="color:#a6e22e">else</span> <span style="color:#960050;background-color:#1e0010">}}{{</span> <span style="color:#a6e22e">printf</span> <span style="color:#960050;background-color:#1e0010">&#34;%</span><span style="color:#a6e22e">s</span><span style="color:#960050;background-color:#1e0010">.&#34;</span> <span style="color:#960050;background-color:#1e0010">(.</span><span style="color:#a6e22e">Get</span> <span style="color:#960050;background-color:#1e0010">&#34;</span><span style="color:#a6e22e">thumb</span><span style="color:#960050;background-color:#1e0010">&#34;)</span> <span style="color:#960050;background-color:#1e0010">|</span> <span style="color:#a6e22e">replace</span> <span style="color:#960050;background-color:#1e0010">(.</span><span style="color:#a6e22e">Get</span> <span style="color:#960050;background-color:#1e0010">&#34;</span><span style="color:#a6e22e">link</span><span style="color:#960050;background-color:#1e0010">&#34;)</span> <span style="color:#960050;background-color:#1e0010">&#34;.&#34;</span> <span style="color:#960050;background-color:#1e0010">}}{{</span> <span style="color:#a6e22e">end</span> <span style="color:#960050;background-color:#1e0010">}}&#34;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#960050;background-color:#1e0010">{{</span> <span style="color:#a6e22e">if</span> <span style="color:#a6e22e">or</span> <span style="color:#960050;background-color:#1e0010">(.</span><span style="color:#a6e22e">Get</span> <span style="color:#960050;background-color:#1e0010">&#34;</span><span style="color:#a6e22e">alt</span><span style="color:#960050;background-color:#1e0010">&#34;)</span> <span style="color:#960050;background-color:#1e0010">(.</span><span style="color:#a6e22e">Get</span> <span style="color:#960050;background-color:#1e0010">&#34;</span><span style="color:#a6e22e">caption</span><span style="color:#960050;background-color:#1e0010">&#34;)</span> <span style="color:#960050;background-color:#1e0010">}}</span><span style="color:#a6e22e">alt</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{ with .Get &#34;</span><span style="color:#a6e22e">alt</span><span style="color:#960050;background-color:#1e0010">&#34;</span> <span style="color:#960050;background-color:#1e0010">}}{{.}}{{</span><span style="color:#a6e22e">else</span><span style="color:#960050;background-color:#1e0010">}}{{</span> <span style="color:#960050;background-color:#1e0010">.</span><span style="color:#a6e22e">Get</span> <span style="color:#960050;background-color:#1e0010">&#34;</span><span style="color:#a6e22e">caption</span><span style="color:#960050;background-color:#1e0010">&#34;</span> <span style="color:#960050;background-color:#1e0010">}}{{</span> <span style="color:#a6e22e">end</span> <span style="color:#960050;background-color:#1e0010">}}&#34;{{</span> <span style="color:#a6e22e">end</span> <span style="color:#960050;background-color:#1e0010">}}</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#960050;background-color:#1e0010">{{</span> <span style="color:#a6e22e">with</span> <span style="color:#960050;background-color:#1e0010">.</span><span style="color:#a6e22e">Get</span> <span style="color:#960050;background-color:#1e0010">&#34;</span><span style="color:#a6e22e">width</span><span style="color:#960050;background-color:#1e0010">&#34;</span> <span style="color:#960050;background-color:#1e0010">}}</span><span style="color:#a6e22e">width</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{.}}&#34;</span><span style="color:#960050;background-color:#1e0010">{{</span> <span style="color:#a6e22e">end</span> <span style="color:#960050;background-color:#1e0010">}}</span>/&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">a</span>&gt;
+</span></span><span style="display:flex;"><span>    {{ if or (or (.Get &#34;title&#34;) (.Get &#34;caption&#34;)) (.Get &#34;attr&#34;)}}
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">figcaption</span>&gt;
+</span></span><span style="display:flex;"><span>        {{ with .Get &#34;title&#34; }}&lt;<span style="color:#f92672">h4</span>&gt;{{.}}&lt;/<span style="color:#f92672">h4</span>&gt;{{ end }}
+</span></span><span style="display:flex;"><span>        {{ if or (.Get &#34;caption&#34;) (.Get &#34;attr&#34;)}}
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>        {{ .Get &#34;caption&#34; }}
+</span></span><span style="display:flex;"><span>        {{ with .Get &#34;attrlink&#34;}}&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{.}}&#34;</span>&gt;{{ .Get &#34;attr&#34; }}&lt;/<span style="color:#f92672">a</span>&gt;{{ else }}{{ .Get &#34;attr&#34;}}{{ end }}
+</span></span><span style="display:flex;"><span>        &lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>        {{ end }}
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">figcaption</span>&gt;
+</span></span><span style="display:flex;"><span>    {{ end }}
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">figure</span>&gt;
+</span></span></code></pre></div><p>This new shortcode accepts two new parameters size and thumb, and behaves differently as follows:</p>
+<p><code>{{&lt; figure src=&quot;/img/homepage/cc_jeepers.jpg&quot; &gt;}}</code> does the same as normal, but with a hyperlink to itself:</p>
+
+<link rel="stylesheet" href=/css/hugo-easy-gallery.css />
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/img/homepage/cc_jeepers.jpg" />
+    </div>
+    <a href="/img/homepage/cc_jeepers.jpg" itemprop="contentUrl"></a>
+  </figure>
+</div>
+
+<p><code>{{&lt; figure link=&quot;/img/homepage/cc_jeepers.jpg&quot; thumb=&quot;-thumb&quot; &gt;}}</code> will display <code>/img/homepage/cc_jeepers-thumb.jpg</code> and a hyperlink to <code>/img/homepage/cc_jeepers.jpg</code>:</p>
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/img/homepage/cc_jeepers-thumb.jpg" />
+    </div>
+    <a href="/img/homepage/cc_jeepers.jpg" itemprop="contentUrl"></a>
+  </figure>
+</div>
+
+<p>That’s already kind of useful by itself, but wait, there’s more…</p>
+<h2 id="shortcode-to-enable-photoswipe">Shortcode to enable PhotoSwipe</h2>
+<p>To initialise PhotoSwipe we need to add some html and include the PhotoSwipe css/js libraries, which we’ll do by creating a <code>pswp-init</code> shortcode and calling it anywhere on the page/post where you want to use PhotoSwipe. Note the bulk of this file is as per the PhotoSwipe <a href="http://photoswipe.com/documentation/getting-started.html#initialization">getting started docs</a>, except that I’m linking the PhotoSwipe css/js libraries from a CDN.</p>
+<p>Put this file in <code>/layouts/shortcodes/pswp-init.html</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#75715e">&lt;!-- Photoswipe css/js libraries --&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">link</span> <span style="color:#a6e22e">rel</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;stylesheet&#34;</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/photoswipe.min.css&#34;</span> <span style="color:#a6e22e">integrity</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sha256-sCl5PUOGMLfFYctzDW3MtRib0ctyUvI9Qsmq2wXOeBY=&#34;</span> <span style="color:#a6e22e">crossorigin</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;anonymous&#34;</span> /&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">link</span> <span style="color:#a6e22e">rel</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;stylesheet&#34;</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/default-skin/default-skin.min.css&#34;</span> <span style="color:#a6e22e">integrity</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sha256-BFeI1V+Vh1Rk37wswuOYn5lsTcaU96hGaI7OUVCLjPc=&#34;</span> <span style="color:#a6e22e">crossorigin</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;anonymous&#34;</span> /&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/photoswipe.min.js&#34;</span> <span style="color:#a6e22e">integrity</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sha256-UplRCs9v4KXVJvVY+p+RSo5Q4ilAUXh7kpjyIP5odyc=&#34;</span> <span style="color:#a6e22e">crossorigin</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;anonymous&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/photoswipe-ui-default.min.js&#34;</span> <span style="color:#a6e22e">integrity</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sha256-PWHOlUzc96pMc8ThwRIXPn8yH4NOLu42RQ0b9SpnpFk=&#34;</span> <span style="color:#a6e22e">crossorigin</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;anonymous&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!-- Root element of PhotoSwipe. Must have class pswp. --&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;pswp&#34;</span> <span style="color:#a6e22e">tabindex</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;-1&#34;</span> <span style="color:#a6e22e">role</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;dialog&#34;</span> <span style="color:#a6e22e">aria-hidden</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;true&#34;</span>&gt;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!-- Background of PhotoSwipe.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     It&#39;s a separate element, as animating opacity is faster than rgba(). --&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;pswp__bg&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!-- Slides wrapper with overflow:hidden. --&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;pswp__scroll-wrap&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">&lt;!-- Container that holds slides.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">      PhotoSwipe keeps only 3 of them in DOM to save memory.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">      Don&#39;t modify these 3 pswp__item elements, data is added later on. --&gt;</span>
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;pswp__container&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;pswp__item&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;pswp__item&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;pswp__item&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">&lt;!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. --&gt;</span>
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;pswp__ui pswp__ui--hidden&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;pswp__top-bar&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">&lt;!--  Controls are self-explanatory. Order can be changed. --&gt;</span>
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;pswp__counter&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;pswp__button pswp__button--close&#34;</span> <span style="color:#a6e22e">title</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Close (Esc)&#34;</span>&gt;&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;pswp__button pswp__button--share&#34;</span> <span style="color:#a6e22e">title</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Share&#34;</span>&gt;&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;pswp__button pswp__button--fs&#34;</span> <span style="color:#a6e22e">title</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Toggle fullscreen&#34;</span>&gt;&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;pswp__button pswp__button--zoom&#34;</span> <span style="color:#a6e22e">title</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Zoom in/out&#34;</span>&gt;&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">&lt;!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR --&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">&lt;!-- element will get class pswp__preloader--active when preloader is running --&gt;</span>
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;pswp__preloader&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;pswp__preloader__icn&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>          &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;pswp__preloader__cut&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>            &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;pswp__preloader__donut&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>          &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;pswp__share-modal pswp__share-modal--hidden pswp__single-tap&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;pswp__share-tooltip&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;pswp__button pswp__button--arrow--left&#34;</span> <span style="color:#a6e22e">title</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Previous (arrow left)&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;pswp__button pswp__button--arrow--right&#34;</span> <span style="color:#a6e22e">title</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Next (arrow right)&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;pswp__caption&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;pswp__caption__center&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!--jQuery must be loaded before you load init-pswp.js; If your template already loads jQuery in the header then you don&#39;t need to load it again here; if your template already loads jQuery in the footer, then you could load init-pswp.js there instead so you don&#39;t load jQuery twice (although as long as you&#39;re loading jQuery from the same source it doesn&#39;t matter if you load it twice) --&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://code.jquery.com/jquery-1.12.4.min.js&#34;</span> <span style="color:#a6e22e">integrity</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=&#34;</span> <span style="color:#a6e22e">crossorigin</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;anonymous&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/js/pswp-init.js&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span></code></pre></div><p>Right at the end, we link to jQuery, and then a js and a css file. If you wanted to, you could put the js and css below in a <code>&lt;script&gt;</code> and a <code>&lt;style&gt;</code> tag so it’s all contained in the shortcode file, but I prefer to keep my js and css in separate files.</p>
+<h2 id="the-javascript">The JavaScript</h2>
+<p>This script runs once the page is loaded, and does three things:</p>
+<ul>
+<li><a href="http://photoswipe.com/documentation/getting-started.html#dom-to-slide-objects">Create an array of slide objects</a> from all the figures on the page.</li>
+<li>If size wasn’t pre-defined, load the image to determine its size</li>
+<li>Binds click event to links/thumbnails to activate PhotoSwipe</li>
+</ul>
+<p>Put this file in <code>/static/js/pswp-init.js</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">$</span>( document ).<span style="color:#a6e22e">ready</span>(<span style="color:#66d9ef">function</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">items</span> <span style="color:#f92672">=</span> []; <span style="color:#75715e">// array of slide objects that will be passed to PhotoSwipe()
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// for every figure element on the page:
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#39;figure&#39;</span>).<span style="color:#a6e22e">each</span>( <span style="color:#66d9ef">function</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// get properties from child a/img/figcaption elements,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">$figure</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">$</span>(<span style="color:#66d9ef">this</span>),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">$a</span>    <span style="color:#f92672">=</span> <span style="color:#a6e22e">$figure</span>.<span style="color:#a6e22e">find</span>(<span style="color:#e6db74">&#39;a&#39;</span>),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">$src</span>  <span style="color:#f92672">=</span> <span style="color:#a6e22e">$a</span>.<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;href&#39;</span>),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">$title</span>  <span style="color:#f92672">=</span> <span style="color:#a6e22e">$figure</span>.<span style="color:#a6e22e">find</span>(<span style="color:#e6db74">&#39;figcaption&#39;</span>).<span style="color:#a6e22e">html</span>(),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">$msrc</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">$figure</span>.<span style="color:#a6e22e">find</span>(<span style="color:#e6db74">&#39;img&#39;</span>).<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#39;src&#39;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// if data-size on &lt;a&gt; tag is set, read it and create an item
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">$a</span>.<span style="color:#a6e22e">data</span>(<span style="color:#e6db74">&#39;size&#39;</span>)) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">$size</span>   <span style="color:#f92672">=</span> <span style="color:#a6e22e">$a</span>.<span style="color:#a6e22e">data</span>(<span style="color:#e6db74">&#39;size&#39;</span>).<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#39;x&#39;</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">item</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">src</span>   <span style="color:#f92672">:</span> <span style="color:#a6e22e">$src</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">w</span>   <span style="color:#f92672">:</span> <span style="color:#a6e22e">$size</span>[<span style="color:#ae81ff">0</span>],
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">h</span>     <span style="color:#f92672">:</span> <span style="color:#a6e22e">$size</span>[<span style="color:#ae81ff">1</span>],
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">title</span>   <span style="color:#f92672">:</span> <span style="color:#a6e22e">$title</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">msrc</span>  <span style="color:#f92672">:</span> <span style="color:#a6e22e">$msrc</span>
+</span></span><span style="display:flex;"><span>      };
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// if not, set temp default size then load the image to check actual size
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">item</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">src</span>   <span style="color:#f92672">:</span> <span style="color:#a6e22e">$src</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">w</span>   <span style="color:#f92672">:</span> <span style="color:#ae81ff">800</span>, <span style="color:#75715e">// temp default size
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">h</span>     <span style="color:#f92672">:</span> <span style="color:#ae81ff">600</span>, <span style="color:#75715e">// temp default size
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">title</span>   <span style="color:#f92672">:</span> <span style="color:#a6e22e">$title</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">msrc</span>  <span style="color:#f92672">:</span> <span style="color:#a6e22e">$msrc</span>
+</span></span><span style="display:flex;"><span>      };
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// load the image to check its dimensions
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#75715e">// update the item as soon as w and h are known (check every 30ms)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">img</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Image</span>(); 
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">img</span>.<span style="color:#a6e22e">src</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">$src</span>;
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">wait</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">setInterval</span>(<span style="color:#66d9ef">function</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">w</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">img</span>.<span style="color:#a6e22e">naturalWidth</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">h</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">img</span>.<span style="color:#a6e22e">naturalHeight</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">w</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">h</span>) {
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">clearInterval</span>(<span style="color:#a6e22e">wait</span>);
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">w</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">w</span>;
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">h</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">h</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      }, <span style="color:#ae81ff">30</span>);
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Save the index of this image then add it to the array
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">index</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">items</span>.<span style="color:#a6e22e">length</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">items</span>.<span style="color:#a6e22e">push</span>(<span style="color:#a6e22e">item</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Event handler for click on a figure
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">$figure</span>.<span style="color:#a6e22e">on</span>(<span style="color:#e6db74">&#39;click&#39;</span>, <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">event</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">preventDefault</span>(); <span style="color:#75715e">// prevent the normal behaviour i.e. load the &lt;a&gt; hyperlink
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#75715e">// Get the PSWP element and initialise it with the desired options
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">$pswp</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#39;.pswp&#39;</span>)[<span style="color:#ae81ff">0</span>];
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">options</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">index</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">index</span>, 
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">bgOpacity</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0.8</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">showHideOpacity</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">PhotoSwipe</span>(<span style="color:#a6e22e">$pswp</span>, <span style="color:#a6e22e">PhotoSwipeUI_Default</span>, <span style="color:#a6e22e">items</span>, <span style="color:#a6e22e">options</span>).<span style="color:#a6e22e">init</span>();
+</span></span><span style="display:flex;"><span>    }); 
+</span></span><span style="display:flex;"><span>  });
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><h2 id="demo-with-individual-images">Demo with individual images</h2>
+<p>With the <code>pswp-init</code> shortcode called, our image should now show a carousel when clicked:</p>
+<p><code>{{&lt; figure link=&quot;/img/homepage/cc_jeepers.jpg&quot; thumb=&quot;-thumb&quot; &gt;}}</code>:</p>
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/img/homepage/cc_jeepers-thumb.jpg" />
+    </div>
+    <a href="/img/homepage/cc_jeepers.jpg" itemprop="contentUrl"></a>
+  </figure>
+</div>
+
+<p>Note that the large image was already loaded - this is because we didn’t pre-define the image size, so the script had to load the image to check its size. If we pre-define the size, your browser won’t need to load it until you click on it (or any other image). We can also include a caption.</p>
+<p><code>{{&lt; figure link=&quot;/img/homepage/sydney-harbour.jpg&quot; thumb=&quot;-thumb&quot; size=&quot;1920x928&quot; caption=&quot;Sydney Harbour&quot; &gt;}}</code>:</p>
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" data-size="1920x928">
+      <img itemprop="thumbnail" src="/img/homepage/sydney-harbour-thumb.jpg" alt="Sydney Harbour"/>
+    </div>
+    <a href="/img/homepage/sydney-harbour.jpg" itemprop="contentUrl"></a>
+      <figcaption>
+          <p>Sydney Harbour</p>
+      </figcaption>
+  </figure>
+</div>
+
+<p>If you refresh the page and then click on the image above, you’ll see it is pixellated for a litle while whilst it loads.</p>
+<p>You could argue that it’s better to avoid pre-loading the images just to get their dimensions, but I’d argue it doesn’t really matter because PhotoSwipe pre-loads <strong>all</strong> of the images as soon as you activate it (i.e. the first time you click on an image).</p>
+<h2 id="one-last-shortcode-to-make-a-gallery">One last shortcode to make a gallery</h2>
+<p>But what if you <strong>do</strong> want a bunch of thumbnails all together in a box?</p>
+<p>Don’t worry, we can do that too. Here’s the code:</p>
+<p>Put this file in <code>/layouts/shortcodes/gallery.html</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;gallery&#34;</span> <span style="color:#a6e22e">itemscope</span> <span style="color:#a6e22e">itemtype</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://schema.org/ImageGallery&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>{{ .Inner }}
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;title&#34;</span>&gt;{{ .Get &#34;title&#34; }}&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">link</span> <span style="color:#a6e22e">rel</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;stylesheet&#34;</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/css/pswp-gallery.css&#34;</span> /&gt;
+</span></span></code></pre></div><p>Put this file in <code>/static/css/pswp-gallery.css</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">gallery</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">float</span>: <span style="color:#66d9ef">none</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">border</span>: <span style="color:#ae81ff">1</span><span style="color:#66d9ef">px</span> <span style="color:#66d9ef">solid</span> <span style="color:#66d9ef">lightgrey</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">padding</span>: <span style="color:#ae81ff">10</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">margin</span>: <span style="color:#ae81ff">0</span><span style="color:#66d9ef">px</span> <span style="color:#ae81ff">0</span><span style="color:#66d9ef">px</span> <span style="color:#ae81ff">10</span><span style="color:#66d9ef">px</span> <span style="color:#ae81ff">10</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">gallery</span> .<span style="color:#a6e22e">title</span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">text-align</span>: <span style="color:#66d9ef">center</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">clear</span>:<span style="color:#66d9ef">left</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">//</span><span style="color:#66d9ef">border-top</span>: <span style="color:#ae81ff">1</span><span style="color:#66d9ef">px</span> <span style="color:#66d9ef">solid</span> <span style="color:#66d9ef">lightgrey</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">gallery</span> <span style="color:#f92672">img</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">width</span>: <span style="color:#ae81ff">100</span><span style="color:#66d9ef">%</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">height</span>: <span style="color:#66d9ef">auto</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">gallery</span> <span style="color:#f92672">figure</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">display</span>: <span style="color:#66d9ef">block</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">float</span>: <span style="color:#66d9ef">left</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">margin</span>: <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">5</span><span style="color:#66d9ef">px</span> <span style="color:#ae81ff">5</span><span style="color:#66d9ef">px</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">gallery</span> <span style="color:#f92672">figcaption</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">display</span>: <span style="color:#66d9ef">none</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#f92672">figcaption</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">font-size</span>: <span style="color:#ae81ff">75</span><span style="color:#66d9ef">%</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="demo-gallery">Demo Gallery</h2>
+<p>Hugo shortcodes:</p>
+<pre tabindex="0"><code>{{&lt; gallery title=&#34;Pictures from my Arduino post&#34; &gt;}}
+{{&lt; figure link=&#34;/img/arduino/garage-opener.jpg&#34; thumb=&#34;-thumb&#34; size=&#34;600x800&#34; caption=&#34;Garage remote&#34; &gt;}}
+{{&lt; figure link=&#34;/img/arduino/garage-opener-inside.jpg&#34; thumb=&#34;-thumb&#34; size=&#34;800x600&#34; caption=&#34;Garage remote showing EV1527 chipset&#34; &gt;}}
+{{&lt; figure link=&#34;/img/arduino/ms-front.jpg&#34; thumb=&#34;-thumb&#34; size=&#34;600x800&#34; caption=&#34;RC mains switch - front&#34; &gt;}}
+{{&lt; figure link=&#34;/img/arduino/ms-rear.jpg&#34; thumb=&#34;-thumb&#34; size=&#34;600x800&#34; caption=&#34;RC mains switch - back showing PowerTran model A0342&#34; &gt;}}
+{{&lt; figure link=&#34;/img/arduino/ms-remote.jpg&#34; thumb=&#34;-thumb&#34; size=&#34;600x800&#34; caption=&#34;RC mains switch remote&#34; &gt;}}
+{{&lt; figure link=&#34;/img/arduino/ms-remote-inside.jpg&#34; thumb=&#34;-thumb&#34; size=&#34;600x800&#34; caption=&#34;RC mains switch remote showing LX2262A-R4 chipset&#34; &gt;}}
+{{&lt; figure link=&#34;/img/arduino/lamp-setup.jpg&#34; thumb=&#34;-thumb&#34; size=&#34;600x800&#34; caption=&#34;Test setup with lamp&#34; &gt;}}
+{{&lt; /gallery &gt;}}
+</code></pre><p>Result:</p>
+
+
+
+<div class="gallery caption-position-bottom caption-effect-slide hover-effect-zoom hover-transition" itemscope itemtype="http://schema.org/ImageGallery">
+	  
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/img/arduino/garage-opener-thumb.jpg');" data-size="600x800">
+      <img itemprop="thumbnail" src="/img/arduino/garage-opener-thumb.jpg" alt="Garage remote"/>
+    </div>
+    <a href="/img/arduino/garage-opener.jpg" itemprop="contentUrl"></a>
+      <figcaption>
+          <p>Garage remote</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/img/arduino/garage-opener-inside-thumb.jpg');" data-size="800x600">
+      <img itemprop="thumbnail" src="/img/arduino/garage-opener-inside-thumb.jpg" alt="Garage remote showing EV1527 chipset"/>
+    </div>
+    <a href="/img/arduino/garage-opener-inside.jpg" itemprop="contentUrl"></a>
+      <figcaption>
+          <p>Garage remote showing EV1527 chipset</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/img/arduino/ms-front-thumb.jpg');" data-size="600x800">
+      <img itemprop="thumbnail" src="/img/arduino/ms-front-thumb.jpg" alt="RC mains switch - front"/>
+    </div>
+    <a href="/img/arduino/ms-front.jpg" itemprop="contentUrl"></a>
+      <figcaption>
+          <p>RC mains switch - front</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/img/arduino/ms-rear-thumb.jpg');" data-size="600x800">
+      <img itemprop="thumbnail" src="/img/arduino/ms-rear-thumb.jpg" alt="RC mains switch - back showing PowerTran model A0342"/>
+    </div>
+    <a href="/img/arduino/ms-rear.jpg" itemprop="contentUrl"></a>
+      <figcaption>
+          <p>RC mains switch - back showing PowerTran model A0342</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/img/arduino/ms-remote-thumb.jpg');" data-size="600x800">
+      <img itemprop="thumbnail" src="/img/arduino/ms-remote-thumb.jpg" alt="RC mains switch remote"/>
+    </div>
+    <a href="/img/arduino/ms-remote.jpg" itemprop="contentUrl"></a>
+      <figcaption>
+          <p>RC mains switch remote</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/img/arduino/ms-remote-inside-thumb.jpg');" data-size="600x800">
+      <img itemprop="thumbnail" src="/img/arduino/ms-remote-inside-thumb.jpg" alt="RC mains switch remote showing LX2262A-R4 chipset"/>
+    </div>
+    <a href="/img/arduino/ms-remote-inside.jpg" itemprop="contentUrl"></a>
+      <figcaption>
+          <p>RC mains switch remote showing LX2262A-R4 chipset</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/img/arduino/lamp-setup-thumb.jpg');" data-size="600x800">
+      <img itemprop="thumbnail" src="/img/arduino/lamp-setup-thumb.jpg" alt="Test setup with lamp"/>
+    </div>
+    <a href="/img/arduino/lamp-setup.jpg" itemprop="contentUrl"></a>
+      <figcaption>
+          <p>Test setup with lamp</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+</div>
+
+<h2 id="dont-forget">Don&rsquo;t forget</h2>
+<p>to call <code>{{&lt; pswp-init &gt;}}</code> somewhere on the page!</p>
+<h2 id="credits">Credits</h2>
+<p>Thanks to <a href="http://www.thehome.dk/article/photoswipe-gallery-hugo/">Tom Helmer</a> and <a href="https://webdesign.tutsplus.com/tutorials/the-perfect-lightbox-using-photoswipe-with-jquery--cms-23587">Thoriq Firdaus</a> for their blog posts which helped me with this post.</p>
+      </article>
+    </section>
+
+    
+
+    
+
+    
+  </div>
+</div>
+
+
+            <footer class="ui basic center aligned segment" style="background-color: transparent;">
+              
+              <p>© 2016 - 2022 Hugo Theme Dream</p>
+              
+
+              <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/g1eny0ung/hugo-theme-dream" target="_blank">Dream</a>.</p>
+
+              
+            </footer>
+          </div>
+        </section>
+        <section class="back">
+          <div class="dream-max-width">
+            <header class="ui basic very padded segment dream-header">
+  
+	<div class="ui small image">
+			<img src="/img/avatar.jpeg" alt="avatar" />
+		</div>
+	
+  
+
+  <div class="content">
+    <h1 class="ui extra-large header">Hugo Theme Dream<span class="sub header">Motto</span>
+	  <noscript>Please enable JavaScript for this website to work properly.</noscript>
+    </h1>
+
+
+    <article class="ui horizontal list">
+      
+      <a class="item" href="/categories">
+        <i class="th list icon" title="All Categories"></i>
+      </a>
+      <a class="item" href="/tags">
+        <i class="tags icon" title="All Tags"></i>
+      </a>
+    </article>
+
+
+    
+    
+    
+    
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    
+
+    
+
+    
+    
+    
+          <div class="dream-tags">
+          
+          
+          
+            <a class="ui label" href="/tags/css/" title="css">
+              css
+            </a>
+          
+          
+          
+            <a class="ui label" href="/tags/emoji/" title="emoji">
+              emoji
+            </a>
+          
+          
+          
+            <a class="ui label" href="/tags/html/" title="html">
+              html
+            </a>
+          
+          
+          
+            <a class="ui label" href="/tags/markdown/" title="markdown">
+              markdown
+            </a>
+          
+          
+          
+            <a class="ui label" href="/tags/photoswipe/" title="Photoswipe">
+              Photoswipe
+            </a>
+          
+          
+          
+            <a class="ui label" href="/tags/privacy/" title="privacy&#34;">
+              privacy&#34;
+            </a>
+          
+          
+          
+            <a class="ui label" href="/tags/shortcodes/" title="shortcodes&#34;,">
+              shortcodes&#34;,
+            </a>
+          
+          
+          
+            <a class="ui label" href="/tags/text/" title="text">
+              text
+            </a>
+          
+          
+          
+            <a class="ui label" href="/tags/themes/" title="themes">
+              themes
+            </a>
+          
+          
+          
+            <a class="ui label" href="/tags/themes-guide/" title="Themes Guide">
+              Themes Guide
+            </a>
+          
+          </div>
+    
+
+    
+  </div>
+</header>
+
+
+<div class="ui relaxed grid dream-grid dream-back">
+  
+  
+  
+  <div class="sixteen wide mobile eight wide tablet four wide computer column dream-column">
+    <article class="ui segment markdown-body">
+      <div class="ui medium header">About</div>
+      <p>Written in Go, Hugo is an open source static site generator available under the <a href="https://github.com/gohugoio/hugo/blob/master/LICENSE">Apache Licence 2.0.</a> Hugo supports TOML, YAML and JSON data file types, Markdown and HTML content files and uses shortcodes to add rich content. Other notable features are taxonomies, multilingual mode, image processing, custom output formats, HTML/CSS/JS minification and support for Sass SCSS workflows.</p>
+<p>Hugo makes use of a variety of open source projects including:</p>
+<ul>
+<li><a href="https://github.com/yuin/goldmark">https://github.com/yuin/goldmark</a></li>
+<li><a href="https://github.com/alecthomas/chroma">https://github.com/alecthomas/chroma</a></li>
+<li><a href="https://github.com/muesli/smartcrop">https://github.com/muesli/smartcrop</a></li>
+<li><a href="https://github.com/spf13/cobra">https://github.com/spf13/cobra</a></li>
+<li><a href="https://github.com/spf13/viper">https://github.com/spf13/viper</a></li>
+</ul>
+<p>Hugo is ideal for blogs, corporate websites, creative portfolios, online magazines, single page applications or even a website with thousands of pages.</p>
+<p>Hugo is for people who want to hand code their own website without worrying about setting up complicated runtimes, dependencies and databases.</p>
+<p>Websites built with Hugo are extremelly fast, secure and can be deployed anywhere including, AWS, GitHub Pages, Heroku, Netlify and any other hosting provider.</p>
+<p>Learn more and contribute on <a href="https://github.com/gohugoio">GitHub</a>.</p>
+
+    </article>
+  </div>
+  
+
+  <div class="sixteen wide mobile eight wide tablet four wide computer column dream-column">
+    <article class="ui segment">
+      <div class="ui medium header">Social Links</div>
+      <nav class="ui secondary menu dream-menu dream-socials">
+  
+
+  
+  <a class="item" href="mailto:g1enyy0ung@gmail.com">
+    <i class="large mail icon" title="Email"></i>
+  </a>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+    <a class="item" href="https://twitter.com/joebloggs" target="_blank">
+      <i class="large twitter icon" title="Twitter"></i>
+    </a>
+  
+    <a class="item" href="https://facebook.com/joebloggs" target="_blank">
+      <i class="large facebook icon" title="Facebook"></i>
+    </a>
+  
+    <a class="item" href="https://messenger.com/joebloggs" target="_blank">
+      <i class="large comment icon" title="Facebook Messenger"></i>
+    </a>
+  
+    <a class="item" href="https://vk.com/joebloggs" target="_blank">
+      <i class="large vk icon" title="VKontakte"></i>
+    </a>
+  
+    <a class="item" href="https://mastodon.social/@JoeBloggs" target="_blank">
+      <i class="large hashtag icon" title="Mastodon"></i>
+    </a>
+  
+    <a class="item" href="https://old.reddit.com/r/joebloggssubreddit/" target="_blank">
+      <i class="large android icon" title="SubReddit"></i>
+    </a>
+  
+    <a class="item" href="https://www.reddit.com/u/joebloggs/" target="_blank">
+      <i class="large android icon" title="Reddit User Account"></i>
+    </a>
+  
+    <a class="item" href="https://www.youtube.com/channel/UCuAXFkgsw1L7xaCfnd5JJOw" target="_blank">
+      <i class="large youtube icon" title="YouTube"></i>
+    </a>
+  
+    <a class="item" href="https://www.twitch.tv/moistcr1tikal" target="_blank">
+      <i class="large twitch icon" title="Twitch.tv"></i>
+    </a>
+  
+    <a class="item" href="https://vimeo.com/user12345678" target="_blank">
+      <i class="large vimeo icon" title="Vimeo"></i>
+    </a>
+  
+    <a class="item" href="https://instagram.com/joebloggs" target="_blank">
+      <i class="large instagram icon" title="Instagram"></i>
+    </a>
+  
+    <a class="item" href="https://www.linkedin.com/in/joebloggs" target="">
+      <i class="large linkedin icon" title="Linkedin"></i>
+    </a>
+  
+    <a class="item" href="https://github.com/joebloggs" target="_blank">
+      <i class="large github icon" title="GitHub"></i>
+    </a>
+  
+    <a class="item" href="https://gitlab.com/joebloggs" target="_blank">
+      <i class="large gitlab icon" title="GitLab"></i>
+    </a>
+  
+    <a class="item" href="https://drive.google.com/drive/folders/blablabla?usp=sharing" target="_blank">
+      <i class="large download icon" title="Google Drive/Cloud"></i>
+    </a>
+  
+    <a class="item" href="https://stackoverflow.com/users/1234567/joebloggs" target="_blank">
+      <i class="large stack overflow icon" title="Stack Overflow"></i>
+    </a>
+  
+    <a class="item" href="https://t.me/joebloggs" target="_blank">
+      <i class="large telegram icon" title="Telegram"></i>
+    </a>
+  
+    <a class="item" href="https://wa.me/15551234567?text=I%27m%20interested%20in%20your%20car%20for%20sale" target="_blank">
+      <i class="large whatsapp icon" title="Whatsapp"></i>
+    </a>
+  
+    <a class="item" href="https://www.google.com" target="_blank">
+      <i class="large chain icon" title="Other website"></i>
+    </a>
+  
+    <a class="item" href="https://www.patreon.com/joebloggs" target="_blank">
+      <i class="large patreon icon" title="Patreon"></i>
+    </a>
+  
+    <a class="item" href="https://www.paypal.com/paypalme/JoeBloggs" target="_blank">
+      <i class="large paypal icon" title="PayPal"></i>
+    </a>
+  
+    <a class="item" href="https://www.etsy.com/uk/shop/JoeBloggs" target="_blank">
+      <i class="large etsy icon" title="Etsy"></i>
+    </a>
+  
+    <a class="item" href="https://www.ebay.co.uk/usr/joebloggs" target="_blank">
+      <i class="large cart icon" title="eBay"></i>
+    </a>
+  
+    <a class="item" href="https://soundcloud.com/user-12345678" target="_blank">
+      <i class="large soundcloud icon" title="SoundCloud"></i>
+    </a>
+  
+    <a class="item" href="https://hearthis.at/joe-bloggs/" target="_blank">
+      <i class="large microphone icon" title="HeartThis.at"></i>
+    </a>
+  
+    <a class="item" href="https://www.last.fm/user/JoeBloggs" target="_blank">
+      <i class="large lastfm icon" title="Last.fm"></i>
+    </a>
+  
+    <a class="item" href="https://open.spotify.com/artist/0gxyHStUsqpMadRV0Di1Qt" target="_blank">
+      <i class="large spotify icon" title="Spotify"></i>
+    </a>
+  
+    <a class="item" href="https://www.deezer.com/en/artist/12345678" target="_blank">
+      <i class="large music icon" title="Deezer"></i>
+    </a>
+  
+    <a class="item" href="https://matrix.to/#/@joebloggs:matrix.org" target="_blank">
+      <i class="large at icon" title="Matrix"></i>
+    </a>
+  
+    <a class="item" href="https://discord.gg/HP5sQ6c" target="_blank">
+      <i class="large discord icon" title="Discord Server"></i>
+    </a>
+  
+    <a class="item" href="#ZgotmplZ" target="_blank">
+      <i class="large skype icon" title="Skype"></i>
+    </a>
+  
+    <a class="item" href="mailto:joebloggs@email.com" target="_blank">
+      <i class="large envelope icon" title="Email"></i>
+    </a>
+  
+    <a class="item" href="https://codepen.io/joebloggs" target="_blank">
+      <i class="large codepen icon" title="Codepen"></i>
+    </a>
+  
+    <a class="item" href="#ZgotmplZ" target="_blank">
+      <i class="large lock icon" title="qTox"></i>
+    </a>
+  
+    <a class="item" href="#ZgotmplZ" target="_blank">
+      <i class="large phone icon" title="Telephone"></i>
+    </a>
+  
+    <a class="item" href="#ZgotmplZ" target="_blank">
+      <i class="large bitcoin icon" title="Cryptocurrency"></i>
+    </a>
+  
+  
+</nav>
+
+    </article>
+  </div>
+
+  <div class="sixteen wide mobile eight wide tablet four wide computer column dream-column">
+    
+  </div>
+
+  
+</div>
+
+          </div>
+        </section>
+      </div>
+    </div>
+
+    
+	<script src="/js/3p/jquery.min@3.6.0.js"></script>
+    
+	<script src="/js/3p/semantic.min@2.4.2.js"></script>
+
+    
+
+    
+
+    <script>
+  window.background = "#f7f7f7"
+  window.defaultDark =  null 
+  window.backgroundDark =  null 
+  window.backgroundImageDark =  null 
+  window.darkNav =  null 
+  window.maxTags =  null 
+  window.hasTwitterEmbed =  null 
+  window.fixedNav =  null 
+
+  if (window.hasTwitterEmbed) {
+    
+    window.twttr = (function (d, s, id) {
+      var js,
+        fjs = d.getElementsByTagName(s)[0],
+        t = window.twttr || {}
+      if (d.getElementById(id)) return t
+      js = d.createElement(s)
+      js.id = id
+      js.src = 'https://platform.twitter.com/widgets.js'
+      fjs.parentNode.insertBefore(js, fjs)
+
+      t._e = []
+      t.ready = function (f) {
+        t._e.push(f)
+      }
+
+      return t
+    })(document, 'script', 'twitter-wjs')
+  }
+</script>
+
+<script src="/js/3p/jquery.overlayScrollbars.min@1.13.1.js"></script>
+<script src="/js/header.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/theme.js"></script>
+
+    
+
+
+
+<script src="/js/scrollToTop.js"></script>
+
+
+
+
+<script src="/js/3p/html2canvas.min@1.0.0-rc.1.js"></script>
+<script src="/js/post.js" defer></script>
+
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,1655 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Hugo Easy Gallery | Hugo Theme Dream</title>
+
+    
+
+
+<meta http-equiv="Permissions-Policy" content="interest-cohort=()" />
+
+
+<link rel="manifest" href="/manifest.json">
+<link rel="serviceworker" href="/sw.html">
+
+
+
+<meta name="author" content="Yue Yang" />
+<meta name="description" content="" />
+
+
+
+<meta name="generator" content="Hugo 0.96.0" />
+
+<link rel="canonical" href="https://example.com/post/heg/" />
+
+
+<meta property="og:title" content="Hugo Easy Gallery" />
+<meta property="og:description" content="Automagical PhotoSwipe image gallery with a one-line shortcode" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/post/heg/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2017-03-25T00:00:00+00:00" />
+<meta property="article:modified_time" content="2017-03-25T00:00:00+00:00" />
+
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Hugo Easy Gallery"/>
+<meta name="twitter:description" content="Automagical PhotoSwipe image gallery with a one-line shortcode"/>
+
+
+
+<link rel="stylesheet" href="/css/3p/semantic.min@2.4.2.css" />
+<link rel="stylesheet" href="/css/icomoon.css" />
+
+<link rel="stylesheet" href="/css/3p/OverlayScrollbars.min@1.13.0.css" />
+
+<link rel="stylesheet" href="/css/3p/github-markdown.min@4.0.0.css" />
+<link rel="stylesheet" href="/css/site.css" />
+
+<style>
+  .ui.header a:not(.item, .ui.button):hover {
+    text-decoration: underline;
+  }
+
+  
+  a:not(.item, .ui.button) {
+    color: seagreen !important;
+  }
+  
+
+  
+
+  
+  body.default {
+    
+    background-color: #f7f7f7;
+    
+
+    
+  }
+  
+
+  
+</style>
+
+
+    
+
+
+
+
+
+
+
+    
+  </head>
+
+  <body class="default">
+    
+<nav class="ui secondary menu dream-menu dream-nav">
+
+  <a class="item dream-flip-toggle" title="Flip it!">
+    <i class="large link question circle icon"></i>
+  </a>
+  <a class="item" href="https://example.com" title="Home">
+    <i class="large link home icon"></i>
+  </a>
+  
+  
+  
+  
+</nav>
+
+    <div class="flip-container">
+      <div class="flipper">
+        <section class="front">
+          <div class="dream-max-width">
+            
+<div class="ui relaxed centered grid dream-grid dream-grid-single">
+  
+  
+  
+  
+
+  
+  <aside class="sixteen wide mobile sixteen wide tablet three wide computer column dream-single-aside">
+    
+    <div class="ui segment toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#create-gallery-from-a-directory">Create gallery from a directory</a></li>
+    <li><a href="#create-gallery-of-specific-files">Create gallery of specific files</a></li>
+    <li><a href="#gallery-options">Gallery options</a>
+      <ul>
+        <li><a href="#caption-effects">Caption effects:</a></li>
+        <li><a href="#caption-position">Caption position:</a></li>
+        <li><a href="#hover-effects">Hover effects:</a></li>
+      </ul>
+    </li>
+    <li><a href="#figure-options">Figure options</a>
+      <ul>
+        <li><a href="#specify-separate-thumbnail-and-hi-res-files">Specify separate thumbnail and hi-res files:</a></li>
+        <li><a href="#specify-a-hi-res-file-only">Specify a hi-res file only:</a></li>
+        <li><a href="#specify-the-dimensions-of-your-hi-res-image">Specify the dimensions of your hi-res image:</a></li>
+      </ul>
+    </li>
+    <li><a href="#figure-options---standalone">Figure options - standalone</a>
+      <ul>
+        <li><a href="#disable-photoswipe">Disable photoswipe:</a></li>
+        <li><a href="#reduced-width">Reduced width:</a></li>
+        <li><a href="#with-caption">With caption:</a></li>
+        <li><a href="#with-pretty-captions">With pretty captions:</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+    
+
+    
+  </aside>
+  
+  <div class="sixteen wide mobile sixteen wide tablet ten wide computer column markdown-body dream-single" id="dream-save-post-as-img">
+    <section class="ui segment">
+      <header>
+        <h1 class="ui large header">Hugo Easy Gallery<span class="sub header">
+            <span class="left">
+              @
+              
+                
+                  <a href="https://www.liwen.id.au/heg/" target="_blank">Li-Wen Yip</a>
+                
+              
+
+              | 
+  
+    Saturday, 25 Mar, 2017
+  
+
+
+
+              | 4 minutes read
+
+              
+              | Update at
+                
+  
+    Saturday, 25 Mar, 2017
+  
+
+
+              
+            </span>
+
+            
+            <span class="dream-share">
+  <a href="#" class="save-as-image" title="Save as image" onclick="savePostAsImg()">
+    <i class="save icon"></i>
+  </a>
+  <a href="https://twitter.com/intent/tweet?text=Hugo%20Easy%20Gallery&url=https%3a%2f%2fexample.com%2fpost%2fheg%2f" title="Twitter">
+    <i class="twitter icon"></i>
+  </a>
+  <a href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fexample.com%2fpost%2fheg%2f" title="Facebook">
+    <i class="facebook icon"></i>
+  </a>
+  <a href="https://t.me/share/url?url=https%3a%2f%2fexample.com%2fpost%2fheg%2f&text=Hugo%20Easy%20Gallery" title="Telegram">
+    <i class="telegram icon"></i>
+  </a>
+</span>
+
+            
+          </span>
+        </h1>
+      </header>
+
+      <article class="main">
+        
+
+        <p><em>Automagical PhotoSwipe image gallery with a one-line shortcode</em></p>
+<p>Hugo Easy Gallery makes Hugo image galleries easy. <a href="https://github.com/liwenyip/hugo-easy-gallery/">Get the code and documentation on GitHub</a>. Demo below.</p>
+<h2 id="create-gallery-from-a-directory">Create gallery from a directory</h2>
+<pre tabindex="0"><code>{{&lt; gallery dir=&#34;/img/arduino/&#34; &gt;}} {{&lt; load-photoswipe &gt;}}
+</code></pre><!-- raw HTML omitted -->
+<p>{{&lt; gallery dir=&quot;/img/arduino/&quot; &gt;}} 
+
+
+
+  
+
+
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src=/js/load-photoswipe.js></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/photoswipe.min.css" integrity="sha256-sCl5PUOGMLfFYctzDW3MtRib0ctyUvI9Qsmq2wXOeBY=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/default-skin/default-skin.min.css" integrity="sha256-BFeI1V+Vh1Rk37wswuOYn5lsTcaU96hGaI7OUVCLjPc=" crossorigin="anonymous" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/photoswipe.min.js" integrity="sha256-UplRCs9v4KXVJvVY+p+RSo5Q4ilAUXh7kpjyIP5odyc=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/photoswipe-ui-default.min.js" integrity="sha256-PWHOlUzc96pMc8ThwRIXPn8yH4NOLu42RQ0b9SpnpFk=" crossorigin="anonymous"></script>
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+</p>
+<p>Notes:</p>
+<ul>
+<li>The images are automatically captioned with the file name.</li>
+<li><code>[image].jpg</code> is used for the hi-res image, and <code>[image]-thumb.jpg</code> is used for the thumbnails.</li>
+<li>If <code>[image]-thumb.jpg</code> doesn’t exist, then <code>[image].jpg</code> will be used for both hi-res and thumbnail images (look at the last image - <code>test-setup.jpg)</code>.</li>
+<li>The default thumbnail suffix is <code>-thumb</code>, but you can specify a different one e.g. <code>thumb=&quot;-small&quot;</code> or <code>thumb=&quot;_150x150&quot;</code>.</li>
+<li>The layout is repsonsive - try changing your browser window size or use Chrome <a href="https://developers.google.com/web/tools/chrome-devtools/device-mode/">device mode</a> to see the responsiveness.</li>
+<li><code>{{&lt; load-photoswipe &gt;}}</code> enables PhotoSwipe. You only need to call this shortcode once per page. If you don’t enable PhotoSwipe, you’ll still get the same on-page image gallery, but when you click/tap an image, it will link directly to the hi-res image (if you’ve specified one) instead of loading the PhotoSwipe carousel/lightbox gadget. For details of how the PhotoSwipe bit works, see my <a href="/photoswipe">previous post</a>.</li>
+<li><code>/static/img/arduino/</code> contains the following files:</li>
+</ul>
+<pre tabindex="0"><code>garage-opener-inside-thumb.jpg
+garage-opener-inside.jpg
+garage-opener-thumb.jpg
+garage-opener.jpg
+lamp-setup-thumb.jpg
+lamp-setup.jpg
+ms-front-thumb.jpg
+ms-front.jpg
+ms-rear-thumb.jpg
+ms-rear.jpg
+ms-remote-inside-thumb.jpg
+ms-remote-inside.jpg
+ms-remote-thumb.jpg
+ms-remote.jpg
+**test**-setup.jpg
+</code></pre><h2 id="create-gallery-of-specific-files">Create gallery of specific files</h2>
+<pre tabindex="0"><code>{{&lt; gallery &gt;}}
+{{&lt; figure link=&#34;/img/homepage/sydney-harbour.jpg&#34; caption=&#34;Sydney Harbour&#34; &gt;}}
+{{&lt; figure link=&#34;/img/homepage/cc_jeepers.jpg&#34; caption=&#34;Capital Chorus&#34; &gt;}}
+{{&lt; figure link=&#34;/img/arduino/test-setup.jpg&#34; caption=&#34;Arduino test setup&#34; &gt;}}
+{{&lt; /gallery &gt;}}
+</code></pre>
+
+
+<div class="gallery caption-position-bottom caption-effect-slide hover-effect-zoom hover-transition" itemscope itemtype="http://schema.org/ImageGallery">
+	  
+
+<link rel="stylesheet" href=/css/hugo-easy-gallery.css />
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/img/homepage/sydney-harbour.jpg');">
+      <img itemprop="thumbnail" src="/img/homepage/sydney-harbour.jpg" alt="Sydney Harbour"/>
+    </div>
+    <a href="/img/homepage/sydney-harbour.jpg" itemprop="contentUrl"></a>
+      <figcaption>
+          <p>Sydney Harbour</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/img/homepage/cc_jeepers.jpg');">
+      <img itemprop="thumbnail" src="/img/homepage/cc_jeepers.jpg" alt="Capital Chorus"/>
+    </div>
+    <a href="/img/homepage/cc_jeepers.jpg" itemprop="contentUrl"></a>
+      <figcaption>
+          <p>Capital Chorus</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/img/arduino/test-setup.jpg');">
+      <img itemprop="thumbnail" src="/img/arduino/test-setup.jpg" alt="Arduino test setup"/>
+    </div>
+    <a href="/img/arduino/test-setup.jpg" itemprop="contentUrl"></a>
+      <figcaption>
+          <p>Arduino test setup</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+</div>
+
+<h2 id="gallery-options">Gallery options</h2>
+<p>Optional parameters:</p>
+<ul>
+<li><code>caption-position</code> - determines the captions’ position over the image. Options:</li>
+<li><code>bottom</code> (default)</li>
+<li><code>center</code></li>
+<li><code>none</code> hides captions on the page (they will only show in PhotoSwipe)</li>
+<li><code>caption-effect</code> - determines if/how captions appear upon hover. Options:</li>
+<li><code>slide</code> (default)</li>
+<li><code>fade</code></li>
+<li><code>none</code> (captions always visible)</li>
+<li><code>hover-effect</code> - determines if/how images change upon hover. Options:</li>
+<li><code>zoom</code> (default)</li>
+<li><code>grow</code></li>
+<li><code>shrink</code></li>
+<li><code>slideup</code></li>
+<li><code>slidedown</code></li>
+<li><code>none</code></li>
+<li><code>hover-transition</code> - determines if/how images change upon hover. Options:</li>
+<li>not set - smooth transition (default)</li>
+<li><code>none</code> - hard transition</li>
+</ul>
+<h3 id="caption-effects">Caption effects:</h3>
+<pre tabindex="0"><code>{{&lt; gallery hover-effect=&#34;none&#34; caption-effect=&#34;slide&#34; &gt;}} ...
+{{&lt; gallery hover-effect=&#34;none&#34; caption-effect=&#34;fade&#34; &gt;}} ...
+{{&lt; gallery hover-effect=&#34;none&#34; caption-effect=&#34;appear&#34; &gt;}} ...
+{{&lt; gallery hover-effect=&#34;none&#34; caption-effect=&#34;none&#34; &gt;}} ...
+</code></pre><p>
+
+
+<div class="gallery caption-position-bottom caption-effect-slide hover-effect-none hover-transition" itemscope itemtype="http://schema.org/ImageGallery">
+	   
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/img/homepage/sydney-harbour.jpg');">
+      <img itemprop="thumbnail" src="/img/homepage/sydney-harbour.jpg" alt="Sydney Harbour"/>
+    </div>
+    <a href="/img/homepage/sydney-harbour.jpg" itemprop="contentUrl"></a>
+      <figcaption>
+          <p>Sydney Harbour</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/img/homepage/cc_jeepers.jpg');">
+      <img itemprop="thumbnail" src="/img/homepage/cc_jeepers.jpg" alt="Capital Chorus"/>
+    </div>
+    <a href="/img/homepage/cc_jeepers.jpg" itemprop="contentUrl"></a>
+      <figcaption>
+          <p>Capital Chorus</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/img/arduino/test-setup.jpg');">
+      <img itemprop="thumbnail" src="/img/arduino/test-setup.jpg" alt="Arduino test setup"/>
+    </div>
+    <a href="/img/arduino/test-setup.jpg" itemprop="contentUrl"></a>
+      <figcaption>
+          <p>Arduino test setup</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+</div>
+
+
+
+
+<div class="gallery caption-position-bottom caption-effect-fade hover-effect-none hover-transition" itemscope itemtype="http://schema.org/ImageGallery">
+	   
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/img/homepage/sydney-harbour.jpg');">
+      <img itemprop="thumbnail" src="/img/homepage/sydney-harbour.jpg" alt="Sydney Harbour"/>
+    </div>
+    <a href="/img/homepage/sydney-harbour.jpg" itemprop="contentUrl"></a>
+      <figcaption>
+          <p>Sydney Harbour</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/img/homepage/cc_jeepers.jpg');">
+      <img itemprop="thumbnail" src="/img/homepage/cc_jeepers.jpg" alt="Capital Chorus"/>
+    </div>
+    <a href="/img/homepage/cc_jeepers.jpg" itemprop="contentUrl"></a>
+      <figcaption>
+          <p>Capital Chorus</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/img/arduino/test-setup.jpg');">
+      <img itemprop="thumbnail" src="/img/arduino/test-setup.jpg" alt="Arduino test setup"/>
+    </div>
+    <a href="/img/arduino/test-setup.jpg" itemprop="contentUrl"></a>
+      <figcaption>
+          <p>Arduino test setup</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+</div>
+
+
+
+
+<div class="gallery caption-position-bottom caption-effect-appear hover-effect-none hover-transition" itemscope itemtype="http://schema.org/ImageGallery">
+	  
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/img/homepage/sydney-harbour.jpg');">
+      <img itemprop="thumbnail" src="/img/homepage/sydney-harbour.jpg" alt="Sydney Harbour"/>
+    </div>
+    <a href="/img/homepage/sydney-harbour.jpg" itemprop="contentUrl"></a>
+      <figcaption>
+          <p>Sydney Harbour</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/img/homepage/cc_jeepers.jpg');">
+      <img itemprop="thumbnail" src="/img/homepage/cc_jeepers.jpg" alt="Capital Chorus"/>
+    </div>
+    <a href="/img/homepage/cc_jeepers.jpg" itemprop="contentUrl"></a>
+      <figcaption>
+          <p>Capital Chorus</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/img/arduino/test-setup.jpg');">
+      <img itemprop="thumbnail" src="/img/arduino/test-setup.jpg" alt="Arduino test setup"/>
+    </div>
+    <a href="/img/arduino/test-setup.jpg" itemprop="contentUrl"></a>
+      <figcaption>
+          <p>Arduino test setup</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+</div>
+
+
+
+
+<div class="gallery caption-position-bottom caption-effect-none hover-effect-none hover-transition" itemscope itemtype="http://schema.org/ImageGallery">
+	  
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/img/homepage/sydney-harbour.jpg');">
+      <img itemprop="thumbnail" src="/img/homepage/sydney-harbour.jpg" alt="Sydney Harbour"/>
+    </div>
+    <a href="/img/homepage/sydney-harbour.jpg" itemprop="contentUrl"></a>
+      <figcaption>
+          <p>Sydney Harbour</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/img/homepage/cc_jeepers.jpg');">
+      <img itemprop="thumbnail" src="/img/homepage/cc_jeepers.jpg" alt="Capital Chorus"/>
+    </div>
+    <a href="/img/homepage/cc_jeepers.jpg" itemprop="contentUrl"></a>
+      <figcaption>
+          <p>Capital Chorus</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/img/arduino/test-setup.jpg');">
+      <img itemprop="thumbnail" src="/img/arduino/test-setup.jpg" alt="Arduino test setup"/>
+    </div>
+    <a href="/img/arduino/test-setup.jpg" itemprop="contentUrl"></a>
+      <figcaption>
+          <p>Arduino test setup</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+</div>
+</p>
+<h3 id="caption-position">Caption position:</h3>
+<pre tabindex="0"><code>{{&lt; gallery caption-position=&#34;bottom&#34; caption-effect=&#34;slide&#34; &gt;}} ...
+{{&lt; gallery caption-position=&#34;center&#34; caption-effect=&#34;fade&#34; &gt;}} ...
+{{&lt; gallery caption-position=&#34;none&#34; &gt;}} ...
+</code></pre><p>
+
+
+<div class="gallery caption-position-bottom caption-effect-slide hover-effect-zoom hover-transition" itemscope itemtype="http://schema.org/ImageGallery">
+	  
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/img/homepage/sydney-harbour.jpg');">
+      <img itemprop="thumbnail" src="/img/homepage/sydney-harbour.jpg" alt="Sydney Harbour"/>
+    </div>
+    <a href="/img/homepage/sydney-harbour.jpg" itemprop="contentUrl"></a>
+      <figcaption>
+          <p>Sydney Harbour</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/img/homepage/cc_jeepers.jpg');">
+      <img itemprop="thumbnail" src="/img/homepage/cc_jeepers.jpg" alt="Capital Chorus"/>
+    </div>
+    <a href="/img/homepage/cc_jeepers.jpg" itemprop="contentUrl"></a>
+      <figcaption>
+          <p>Capital Chorus</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/img/arduino/test-setup.jpg');">
+      <img itemprop="thumbnail" src="/img/arduino/test-setup.jpg" alt="Arduino test setup"/>
+    </div>
+    <a href="/img/arduino/test-setup.jpg" itemprop="contentUrl"></a>
+      <figcaption>
+          <p>Arduino test setup</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+</div>
+
+
+
+
+<div class="gallery caption-position-center caption-effect-fade hover-effect-zoom hover-transition" itemscope itemtype="http://schema.org/ImageGallery">
+	  
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/img/homepage/sydney-harbour.jpg');">
+      <img itemprop="thumbnail" src="/img/homepage/sydney-harbour.jpg" alt="Sydney Harbour"/>
+    </div>
+    <a href="/img/homepage/sydney-harbour.jpg" itemprop="contentUrl"></a>
+      <figcaption>
+          <p>Sydney Harbour</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/img/homepage/cc_jeepers.jpg');">
+      <img itemprop="thumbnail" src="/img/homepage/cc_jeepers.jpg" alt="Capital Chorus"/>
+    </div>
+    <a href="/img/homepage/cc_jeepers.jpg" itemprop="contentUrl"></a>
+      <figcaption>
+          <p>Capital Chorus</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/img/arduino/test-setup.jpg');">
+      <img itemprop="thumbnail" src="/img/arduino/test-setup.jpg" alt="Arduino test setup"/>
+    </div>
+    <a href="/img/arduino/test-setup.jpg" itemprop="contentUrl"></a>
+      <figcaption>
+          <p>Arduino test setup</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+</div>
+
+
+
+
+<div class="gallery caption-position-none caption-effect-slide hover-effect-zoom hover-transition" itemscope itemtype="http://schema.org/ImageGallery">
+	   
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/img/homepage/sydney-harbour.jpg');">
+      <img itemprop="thumbnail" src="/img/homepage/sydney-harbour.jpg" alt="Sydney Harbour"/>
+    </div>
+    <a href="/img/homepage/sydney-harbour.jpg" itemprop="contentUrl"></a>
+      <figcaption>
+          <p>Sydney Harbour</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/img/homepage/cc_jeepers.jpg');">
+      <img itemprop="thumbnail" src="/img/homepage/cc_jeepers.jpg" alt="Capital Chorus"/>
+    </div>
+    <a href="/img/homepage/cc_jeepers.jpg" itemprop="contentUrl"></a>
+      <figcaption>
+          <p>Capital Chorus</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/img/arduino/test-setup.jpg');">
+      <img itemprop="thumbnail" src="/img/arduino/test-setup.jpg" alt="Arduino test setup"/>
+    </div>
+    <a href="/img/arduino/test-setup.jpg" itemprop="contentUrl"></a>
+      <figcaption>
+          <p>Arduino test setup</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+</div>
+</p>
+<h3 id="hover-effects">Hover effects:</h3>
+<pre tabindex="0"><code>{{&lt; gallery hover-effect=&#34;grow&#34; &gt;}} ...
+{{&lt; gallery hover-effect=&#34;shrink&#34; &gt;}} ...
+{{&lt; gallery hover-effect=&#34;slideup&#34; &gt;}} ...
+{{&lt; gallery hover-effect=&#34;slidedown&#34; &gt;}} ...
+{{&lt; gallery hover-effect=&#34;none&#34; &gt;}} ...
+{{&lt; gallery hover-effect=&#34;grow&#34; hover-transition=&#34;none&#34; &gt;}} ...
+</code></pre><p>
+
+
+<div class="gallery caption-position-bottom caption-effect-slide hover-effect-grow hover-transition" itemscope itemtype="http://schema.org/ImageGallery">
+	  
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/img/homepage/sydney-harbour.jpg');">
+      <img itemprop="thumbnail" src="/img/homepage/sydney-harbour.jpg" alt="Sydney Harbour"/>
+    </div>
+    <a href="/img/homepage/sydney-harbour.jpg" itemprop="contentUrl"></a>
+      <figcaption>
+          <p>Sydney Harbour</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/img/homepage/cc_jeepers.jpg');">
+      <img itemprop="thumbnail" src="/img/homepage/cc_jeepers.jpg" alt="Capital Chorus"/>
+    </div>
+    <a href="/img/homepage/cc_jeepers.jpg" itemprop="contentUrl"></a>
+      <figcaption>
+          <p>Capital Chorus</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/img/arduino/test-setup.jpg');">
+      <img itemprop="thumbnail" src="/img/arduino/test-setup.jpg" alt="Arduino test setup"/>
+    </div>
+    <a href="/img/arduino/test-setup.jpg" itemprop="contentUrl"></a>
+      <figcaption>
+          <p>Arduino test setup</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+</div>
+
+
+
+
+<div class="gallery caption-position-bottom caption-effect-slide hover-effect-shrink hover-transition" itemscope itemtype="http://schema.org/ImageGallery">
+	  
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/img/homepage/sydney-harbour.jpg');">
+      <img itemprop="thumbnail" src="/img/homepage/sydney-harbour.jpg" alt="Sydney Harbour"/>
+    </div>
+    <a href="/img/homepage/sydney-harbour.jpg" itemprop="contentUrl"></a>
+      <figcaption>
+          <p>Sydney Harbour</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/img/homepage/cc_jeepers.jpg');">
+      <img itemprop="thumbnail" src="/img/homepage/cc_jeepers.jpg" alt="Capital Chorus"/>
+    </div>
+    <a href="/img/homepage/cc_jeepers.jpg" itemprop="contentUrl"></a>
+      <figcaption>
+          <p>Capital Chorus</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/img/arduino/test-setup.jpg');">
+      <img itemprop="thumbnail" src="/img/arduino/test-setup.jpg" alt="Arduino test setup"/>
+    </div>
+    <a href="/img/arduino/test-setup.jpg" itemprop="contentUrl"></a>
+      <figcaption>
+          <p>Arduino test setup</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+</div>
+
+
+
+
+<div class="gallery caption-position-bottom caption-effect-slide hover-effect-slideup hover-transition" itemscope itemtype="http://schema.org/ImageGallery">
+	  
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/img/homepage/sydney-harbour.jpg');">
+      <img itemprop="thumbnail" src="/img/homepage/sydney-harbour.jpg" alt="Sydney Harbour"/>
+    </div>
+    <a href="/img/homepage/sydney-harbour.jpg" itemprop="contentUrl"></a>
+      <figcaption>
+          <p>Sydney Harbour</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/img/homepage/cc_jeepers.jpg');">
+      <img itemprop="thumbnail" src="/img/homepage/cc_jeepers.jpg" alt="Capital Chorus"/>
+    </div>
+    <a href="/img/homepage/cc_jeepers.jpg" itemprop="contentUrl"></a>
+      <figcaption>
+          <p>Capital Chorus</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/img/arduino/test-setup.jpg');">
+      <img itemprop="thumbnail" src="/img/arduino/test-setup.jpg" alt="Arduino test setup"/>
+    </div>
+    <a href="/img/arduino/test-setup.jpg" itemprop="contentUrl"></a>
+      <figcaption>
+          <p>Arduino test setup</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+</div>
+
+
+
+
+<div class="gallery caption-position-bottom caption-effect-slide hover-effect-slidedown hover-transition" itemscope itemtype="http://schema.org/ImageGallery">
+	  
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/img/homepage/sydney-harbour.jpg');">
+      <img itemprop="thumbnail" src="/img/homepage/sydney-harbour.jpg" alt="Sydney Harbour"/>
+    </div>
+    <a href="/img/homepage/sydney-harbour.jpg" itemprop="contentUrl"></a>
+      <figcaption>
+          <p>Sydney Harbour</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/img/homepage/cc_jeepers.jpg');">
+      <img itemprop="thumbnail" src="/img/homepage/cc_jeepers.jpg" alt="Capital Chorus"/>
+    </div>
+    <a href="/img/homepage/cc_jeepers.jpg" itemprop="contentUrl"></a>
+      <figcaption>
+          <p>Capital Chorus</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/img/arduino/test-setup.jpg');">
+      <img itemprop="thumbnail" src="/img/arduino/test-setup.jpg" alt="Arduino test setup"/>
+    </div>
+    <a href="/img/arduino/test-setup.jpg" itemprop="contentUrl"></a>
+      <figcaption>
+          <p>Arduino test setup</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+</div>
+
+
+
+
+<div class="gallery caption-position-bottom caption-effect-slide hover-effect-none hover-transition" itemscope itemtype="http://schema.org/ImageGallery">
+	  
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/img/homepage/sydney-harbour.jpg');">
+      <img itemprop="thumbnail" src="/img/homepage/sydney-harbour.jpg" alt="Sydney Harbour"/>
+    </div>
+    <a href="/img/homepage/sydney-harbour.jpg" itemprop="contentUrl"></a>
+      <figcaption>
+          <p>Sydney Harbour</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/img/homepage/cc_jeepers.jpg');">
+      <img itemprop="thumbnail" src="/img/homepage/cc_jeepers.jpg" alt="Capital Chorus"/>
+    </div>
+    <a href="/img/homepage/cc_jeepers.jpg" itemprop="contentUrl"></a>
+      <figcaption>
+          <p>Capital Chorus</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/img/arduino/test-setup.jpg');">
+      <img itemprop="thumbnail" src="/img/arduino/test-setup.jpg" alt="Arduino test setup"/>
+    </div>
+    <a href="/img/arduino/test-setup.jpg" itemprop="contentUrl"></a>
+      <figcaption>
+          <p>Arduino test setup</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+</div>
+
+
+
+
+<div class="gallery caption-position-bottom caption-effect-slide hover-effect-grow " itemscope itemtype="http://schema.org/ImageGallery">
+	  
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/img/homepage/sydney-harbour.jpg');">
+      <img itemprop="thumbnail" src="/img/homepage/sydney-harbour.jpg" alt="Sydney Harbour"/>
+    </div>
+    <a href="/img/homepage/sydney-harbour.jpg" itemprop="contentUrl"></a>
+      <figcaption>
+          <p>Sydney Harbour</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/img/homepage/cc_jeepers.jpg');">
+      <img itemprop="thumbnail" src="/img/homepage/cc_jeepers.jpg" alt="Capital Chorus"/>
+    </div>
+    <a href="/img/homepage/cc_jeepers.jpg" itemprop="contentUrl"></a>
+      <figcaption>
+          <p>Capital Chorus</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/img/arduino/test-setup.jpg');">
+      <img itemprop="thumbnail" src="/img/arduino/test-setup.jpg" alt="Arduino test setup"/>
+    </div>
+    <a href="/img/arduino/test-setup.jpg" itemprop="contentUrl"></a>
+      <figcaption>
+          <p>Arduino test setup</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+</div>
+</p>
+<h2 id="figure-options">Figure options</h2>
+<h3 id="specify-separate-thumbnail-and-hi-res-files">Specify separate thumbnail and hi-res files:</h3>
+<pre tabindex="0"><code>{{&lt; figure link=&#34;/img/homepage/sydney-harbour.jpg&#34;
+	src=&#34;/img/homepage/sydney-harbour-thumb.jpg&#34; &gt;}}
+OR
+{{&lt; figure link=&#34;/img/homepage/sydney-harbour.jpg&#34; thumb=&#34;-thumb&#34; &gt;}}
+</code></pre>
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/img/homepage/sydney-harbour-thumb.jpg" />
+    </div>
+    <a href="/img/homepage/sydney-harbour.jpg" itemprop="contentUrl"></a>
+  </figure>
+</div>
+
+<h3 id="specify-a-hi-res-file-only">Specify a hi-res file only:</h3>
+<pre tabindex="0"><code>{{&lt; figure link=&#34;/img/homepage/sydney-harbour.jpg&#34; &gt;}}
+OR
+{{&lt; figure src=&#34;/img/homepage/sydney-harbour.jpg&#34; &gt;}}
+</code></pre>
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/img/homepage/sydney-harbour.jpg" />
+    </div>
+    <a href="/img/homepage/sydney-harbour.jpg" itemprop="contentUrl"></a>
+  </figure>
+</div>
+
+<h3 id="specify-the-dimensions-of-your-hi-res-image">Specify the dimensions of your hi-res image:</h3>
+<p><code>size</code> (e.g. <code>size=&quot;1024x768&quot;</code>) pre-defines the image size for PhotoSwipe. Use this option if you don’t want to pre-load the linked image to determine its size.</p>
+<pre tabindex="0"><code>{{&lt; figure link=&#34;/img/homepage/cc_jeepers.jpg&#34; 
+    thumb=&#34;-thumb&#34; size=&#34;1442x662&#34; &gt;}}
+</code></pre>
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" data-size="1442x662">
+      <img itemprop="thumbnail" src="/img/homepage/cc_jeepers-thumb.jpg" />
+    </div>
+    <a href="/img/homepage/cc_jeepers.jpg" itemprop="contentUrl"></a>
+  </figure>
+</div>
+
+<h2 id="figure-options---standalone">Figure options - standalone</h2>
+<p>Use these options only on figures that are not in a gallery…</p>
+<h3 id="disable-photoswipe">Disable photoswipe:</h3>
+<p><code>class=&quot;no-photoswipe&quot;</code> prevents a <code>&lt;figure&gt;</code> from being loaded into PhotoSwipe. If you click on the figure you’ll instead a good ol’ fashioned hyperlink to a bigger image (or - if you haven’t specified a bigger image - the same one).</p>
+<pre tabindex="0"><code>{{&lt; figure link=&#34;/img/homepage/sydney-harbour.jpg&#34;
+	thumb=&#34;-thumb&#34; class=&#34;no-photoswipe&#34; &gt;}}
+</code></pre>
+
+<div class="box" >
+  <figure class="no-photoswipe" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/img/homepage/sydney-harbour-thumb.jpg" />
+    </div>
+    <a href="/img/homepage/sydney-harbour.jpg" itemprop="contentUrl"></a>
+  </figure>
+</div>
+
+<h3 id="reduced-width">Reduced width:</h3>
+<p><code>width</code> defines the <code>max-width</code> of the image displayed on the page. If using a thumbnail for a standalone figure, set this equal to your thumbnail’s native width to make the captions behave properly (or feel free to come up with a better solution and submit a pull request :-)). Also use this option if you don’t have a thumbnail and you don’t want the hi-res image to take up the entire width of the screen/container.</p>
+<pre tabindex="0"><code>{{&lt; figure src=&#34;/img/homepage/sydney-harbour.jpg&#34;
+	width=&#34;400px&#34; &gt;}}
+</code></pre>
+
+<div class="box" style="max-width:400px">
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/img/homepage/sydney-harbour.jpg" />
+    </div>
+    <a href="/img/homepage/sydney-harbour.jpg" itemprop="contentUrl"></a>
+  </figure>
+</div>
+
+<h3 id="with-caption">With caption:</h3>
+<p>By default no CSS styles are applied to the caption. You probably don’t want to do this unless you’ve got your own CSS styles for the <!-- raw HTML omitted --> element.</p>
+<pre tabindex="0"><code>{{&lt; figure src=&#34;/img/homepage/sydney-harbour.jpg&#34;
+	width=&#34;400px&#34; caption=&#34;Sydney Harbour&#34; &gt;}}
+</code></pre>
+
+<div class="box" style="max-width:400px">
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/img/homepage/sydney-harbour.jpg" alt="Sydney Harbour"/>
+    </div>
+    <a href="/img/homepage/sydney-harbour.jpg" itemprop="contentUrl"></a>
+      <figcaption>
+          <p>Sydney Harbour</p>
+      </figcaption>
+  </figure>
+</div>
+
+<h3 id="with-pretty-captions">With pretty captions:</h3>
+<p>You can specify the following options to make your captions pretty:</p>
+<ul>
+<li><code>caption-position</code> - determines the captions’ position over the image. Options:</li>
+<li><code>bottom</code> (default)</li>
+<li><code>center</code></li>
+<li><code>none</code> hides captions on the page (they will only show in PhotoSwipe)</li>
+<li><code>caption-effect</code> - determines if/how captions appear upon hover. Options:
+<ul>
+<li><code>slide</code> (default)</li>
+<li><code>fade</code></li>
+<li><code>none</code> (captions always visible)</li>
+</ul>
+</li>
+</ul>
+<pre tabindex="0"><code>{{&lt; figure src=&#34;/img/homepage/sydney-harbour.jpg&#34; caption=&#34;Sydney Harbour&#34;
+	width=&#34;400px&#34; caption-position=&#34;bottom&#34; &gt;}}
+{{&lt; figure src=&#34;/img/homepage/sydney-harbour.jpg&#34; caption=&#34;Sydney Harbour&#34;
+	width=&#34;400px&#34; caption-position=&#34;bottom&#34; caption-effect=&#34;appear&#34; &gt;}}
+{{&lt; figure ... caption-effect=&#34;slide&#34; &gt;}}
+{{&lt; figure ... caption-effect=&#34;fade&#34; &gt;}}
+</code></pre><p>
+
+<div class="box fancy-figure caption-position-bottom" style="max-width:400px">
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/img/homepage/sydney-harbour.jpg" alt="Sydney Harbour"/>
+    </div>
+    <a href="/img/homepage/sydney-harbour.jpg" itemprop="contentUrl"></a>
+      <figcaption>
+          <p>Sydney Harbour</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+
+<div class="box fancy-figure caption-position-bottom caption-effect-appear" style="max-width:400px">
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/img/homepage/sydney-harbour.jpg" alt="Sydney Harbour"/>
+    </div>
+    <a href="/img/homepage/sydney-harbour.jpg" itemprop="contentUrl"></a>
+      <figcaption>
+          <p>Sydney Harbour</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+
+<div class="box fancy-figure caption-position-bottom caption-effect-slide" style="max-width:400px">
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/img/homepage/sydney-harbour.jpg" alt="Sydney Harbour"/>
+    </div>
+    <a href="/img/homepage/sydney-harbour.jpg" itemprop="contentUrl"></a>
+      <figcaption>
+          <p>Sydney Harbour</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+
+<div class="box fancy-figure caption-position-bottom caption-effect-fade" style="max-width:400px">
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/img/homepage/sydney-harbour.jpg" alt="Sydney Harbour"/>
+    </div>
+    <a href="/img/homepage/sydney-harbour.jpg" itemprop="contentUrl"></a>
+      <figcaption>
+          <p>Sydney Harbour</p>
+      </figcaption>
+  </figure>
+</div>
+</p>
+      </article>
+    </section>
+
+    
+
+    
+
+    
+  </div>
+</div>
+
+
+            <footer class="ui basic center aligned segment" style="background-color: transparent;">
+              
+              <p>© 2016 - 2022 Hugo Theme Dream</p>
+              
+
+              <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/g1eny0ung/hugo-theme-dream" target="_blank">Dream</a>.</p>
+
+              
+            </footer>
+          </div>
+        </section>
+        <section class="back">
+          <div class="dream-max-width">
+            <header class="ui basic very padded segment dream-header">
+  
+	<div class="ui small image">
+			<img src="/img/avatar.jpeg" alt="avatar" />
+		</div>
+	
+  
+
+  <div class="content">
+    <h1 class="ui extra-large header">Hugo Theme Dream<span class="sub header">Motto</span>
+	  <noscript>Please enable JavaScript for this website to work properly.</noscript>
+    </h1>
+
+
+    <article class="ui horizontal list">
+      
+      <a class="item" href="/categories">
+        <i class="th list icon" title="All Categories"></i>
+      </a>
+      <a class="item" href="/tags">
+        <i class="tags icon" title="All Tags"></i>
+      </a>
+    </article>
+
+
+    
+    
+    
+    
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    
+
+    
+
+    
+    
+    
+          <div class="dream-tags">
+          
+          
+          
+            <a class="ui label" href="/tags/css/" title="css">
+              css
+            </a>
+          
+          
+          
+            <a class="ui label" href="/tags/emoji/" title="emoji">
+              emoji
+            </a>
+          
+          
+          
+            <a class="ui label" href="/tags/html/" title="html">
+              html
+            </a>
+          
+          
+          
+            <a class="ui label" href="/tags/markdown/" title="markdown">
+              markdown
+            </a>
+          
+          
+          
+            <a class="ui label" href="/tags/photoswipe/" title="Photoswipe">
+              Photoswipe
+            </a>
+          
+          
+          
+            <a class="ui label" href="/tags/privacy/" title="privacy&#34;">
+              privacy&#34;
+            </a>
+          
+          
+          
+            <a class="ui label" href="/tags/shortcodes/" title="shortcodes&#34;,">
+              shortcodes&#34;,
+            </a>
+          
+          
+          
+            <a class="ui label" href="/tags/text/" title="text">
+              text
+            </a>
+          
+          
+          
+            <a class="ui label" href="/tags/themes/" title="themes">
+              themes
+            </a>
+          
+          
+          
+            <a class="ui label" href="/tags/themes-guide/" title="Themes Guide">
+              Themes Guide
+            </a>
+          
+          </div>
+    
+
+    
+  </div>
+</header>
+
+
+<div class="ui relaxed grid dream-grid dream-back">
+  
+  
+  
+  <div class="sixteen wide mobile eight wide tablet four wide computer column dream-column">
+    <article class="ui segment markdown-body">
+      <div class="ui medium header">About</div>
+      <p>Written in Go, Hugo is an open source static site generator available under the <a href="https://github.com/gohugoio/hugo/blob/master/LICENSE">Apache Licence 2.0.</a> Hugo supports TOML, YAML and JSON data file types, Markdown and HTML content files and uses shortcodes to add rich content. Other notable features are taxonomies, multilingual mode, image processing, custom output formats, HTML/CSS/JS minification and support for Sass SCSS workflows.</p>
+<p>Hugo makes use of a variety of open source projects including:</p>
+<ul>
+<li><a href="https://github.com/yuin/goldmark">https://github.com/yuin/goldmark</a></li>
+<li><a href="https://github.com/alecthomas/chroma">https://github.com/alecthomas/chroma</a></li>
+<li><a href="https://github.com/muesli/smartcrop">https://github.com/muesli/smartcrop</a></li>
+<li><a href="https://github.com/spf13/cobra">https://github.com/spf13/cobra</a></li>
+<li><a href="https://github.com/spf13/viper">https://github.com/spf13/viper</a></li>
+</ul>
+<p>Hugo is ideal for blogs, corporate websites, creative portfolios, online magazines, single page applications or even a website with thousands of pages.</p>
+<p>Hugo is for people who want to hand code their own website without worrying about setting up complicated runtimes, dependencies and databases.</p>
+<p>Websites built with Hugo are extremelly fast, secure and can be deployed anywhere including, AWS, GitHub Pages, Heroku, Netlify and any other hosting provider.</p>
+<p>Learn more and contribute on <a href="https://github.com/gohugoio">GitHub</a>.</p>
+
+    </article>
+  </div>
+  
+
+  <div class="sixteen wide mobile eight wide tablet four wide computer column dream-column">
+    <article class="ui segment">
+      <div class="ui medium header">Social Links</div>
+      <nav class="ui secondary menu dream-menu dream-socials">
+  
+
+  
+  <a class="item" href="mailto:g1enyy0ung@gmail.com">
+    <i class="large mail icon" title="Email"></i>
+  </a>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+    <a class="item" href="https://twitter.com/joebloggs" target="_blank">
+      <i class="large twitter icon" title="Twitter"></i>
+    </a>
+  
+    <a class="item" href="https://facebook.com/joebloggs" target="_blank">
+      <i class="large facebook icon" title="Facebook"></i>
+    </a>
+  
+    <a class="item" href="https://messenger.com/joebloggs" target="_blank">
+      <i class="large comment icon" title="Facebook Messenger"></i>
+    </a>
+  
+    <a class="item" href="https://vk.com/joebloggs" target="_blank">
+      <i class="large vk icon" title="VKontakte"></i>
+    </a>
+  
+    <a class="item" href="https://mastodon.social/@JoeBloggs" target="_blank">
+      <i class="large hashtag icon" title="Mastodon"></i>
+    </a>
+  
+    <a class="item" href="https://old.reddit.com/r/joebloggssubreddit/" target="_blank">
+      <i class="large android icon" title="SubReddit"></i>
+    </a>
+  
+    <a class="item" href="https://www.reddit.com/u/joebloggs/" target="_blank">
+      <i class="large android icon" title="Reddit User Account"></i>
+    </a>
+  
+    <a class="item" href="https://www.youtube.com/channel/UCuAXFkgsw1L7xaCfnd5JJOw" target="_blank">
+      <i class="large youtube icon" title="YouTube"></i>
+    </a>
+  
+    <a class="item" href="https://www.twitch.tv/moistcr1tikal" target="_blank">
+      <i class="large twitch icon" title="Twitch.tv"></i>
+    </a>
+  
+    <a class="item" href="https://vimeo.com/user12345678" target="_blank">
+      <i class="large vimeo icon" title="Vimeo"></i>
+    </a>
+  
+    <a class="item" href="https://instagram.com/joebloggs" target="_blank">
+      <i class="large instagram icon" title="Instagram"></i>
+    </a>
+  
+    <a class="item" href="https://www.linkedin.com/in/joebloggs" target="">
+      <i class="large linkedin icon" title="Linkedin"></i>
+    </a>
+  
+    <a class="item" href="https://github.com/joebloggs" target="_blank">
+      <i class="large github icon" title="GitHub"></i>
+    </a>
+  
+    <a class="item" href="https://gitlab.com/joebloggs" target="_blank">
+      <i class="large gitlab icon" title="GitLab"></i>
+    </a>
+  
+    <a class="item" href="https://drive.google.com/drive/folders/blablabla?usp=sharing" target="_blank">
+      <i class="large download icon" title="Google Drive/Cloud"></i>
+    </a>
+  
+    <a class="item" href="https://stackoverflow.com/users/1234567/joebloggs" target="_blank">
+      <i class="large stack overflow icon" title="Stack Overflow"></i>
+    </a>
+  
+    <a class="item" href="https://t.me/joebloggs" target="_blank">
+      <i class="large telegram icon" title="Telegram"></i>
+    </a>
+  
+    <a class="item" href="https://wa.me/15551234567?text=I%27m%20interested%20in%20your%20car%20for%20sale" target="_blank">
+      <i class="large whatsapp icon" title="Whatsapp"></i>
+    </a>
+  
+    <a class="item" href="https://www.google.com" target="_blank">
+      <i class="large chain icon" title="Other website"></i>
+    </a>
+  
+    <a class="item" href="https://www.patreon.com/joebloggs" target="_blank">
+      <i class="large patreon icon" title="Patreon"></i>
+    </a>
+  
+    <a class="item" href="https://www.paypal.com/paypalme/JoeBloggs" target="_blank">
+      <i class="large paypal icon" title="PayPal"></i>
+    </a>
+  
+    <a class="item" href="https://www.etsy.com/uk/shop/JoeBloggs" target="_blank">
+      <i class="large etsy icon" title="Etsy"></i>
+    </a>
+  
+    <a class="item" href="https://www.ebay.co.uk/usr/joebloggs" target="_blank">
+      <i class="large cart icon" title="eBay"></i>
+    </a>
+  
+    <a class="item" href="https://soundcloud.com/user-12345678" target="_blank">
+      <i class="large soundcloud icon" title="SoundCloud"></i>
+    </a>
+  
+    <a class="item" href="https://hearthis.at/joe-bloggs/" target="_blank">
+      <i class="large microphone icon" title="HeartThis.at"></i>
+    </a>
+  
+    <a class="item" href="https://www.last.fm/user/JoeBloggs" target="_blank">
+      <i class="large lastfm icon" title="Last.fm"></i>
+    </a>
+  
+    <a class="item" href="https://open.spotify.com/artist/0gxyHStUsqpMadRV0Di1Qt" target="_blank">
+      <i class="large spotify icon" title="Spotify"></i>
+    </a>
+  
+    <a class="item" href="https://www.deezer.com/en/artist/12345678" target="_blank">
+      <i class="large music icon" title="Deezer"></i>
+    </a>
+  
+    <a class="item" href="https://matrix.to/#/@joebloggs:matrix.org" target="_blank">
+      <i class="large at icon" title="Matrix"></i>
+    </a>
+  
+    <a class="item" href="https://discord.gg/HP5sQ6c" target="_blank">
+      <i class="large discord icon" title="Discord Server"></i>
+    </a>
+  
+    <a class="item" href="#ZgotmplZ" target="_blank">
+      <i class="large skype icon" title="Skype"></i>
+    </a>
+  
+    <a class="item" href="mailto:joebloggs@email.com" target="_blank">
+      <i class="large envelope icon" title="Email"></i>
+    </a>
+  
+    <a class="item" href="https://codepen.io/joebloggs" target="_blank">
+      <i class="large codepen icon" title="Codepen"></i>
+    </a>
+  
+    <a class="item" href="#ZgotmplZ" target="_blank">
+      <i class="large lock icon" title="qTox"></i>
+    </a>
+  
+    <a class="item" href="#ZgotmplZ" target="_blank">
+      <i class="large phone icon" title="Telephone"></i>
+    </a>
+  
+    <a class="item" href="#ZgotmplZ" target="_blank">
+      <i class="large bitcoin icon" title="Cryptocurrency"></i>
+    </a>
+  
+  
+</nav>
+
+    </article>
+  </div>
+
+  <div class="sixteen wide mobile eight wide tablet four wide computer column dream-column">
+    
+  </div>
+
+  
+</div>
+
+          </div>
+        </section>
+      </div>
+    </div>
+
+    
+	<script src="/js/3p/jquery.min@3.6.0.js"></script>
+    
+	<script src="/js/3p/semantic.min@2.4.2.js"></script>
+
+    
+
+    
+
+    <script>
+  window.background = "#f7f7f7"
+  window.defaultDark =  null 
+  window.backgroundDark =  null 
+  window.backgroundImageDark =  null 
+  window.darkNav =  null 
+  window.maxTags =  null 
+  window.hasTwitterEmbed =  null 
+  window.fixedNav =  null 
+
+  if (window.hasTwitterEmbed) {
+    
+    window.twttr = (function (d, s, id) {
+      var js,
+        fjs = d.getElementsByTagName(s)[0],
+        t = window.twttr || {}
+      if (d.getElementById(id)) return t
+      js = d.createElement(s)
+      js.id = id
+      js.src = 'https://platform.twitter.com/widgets.js'
+      fjs.parentNode.insertBefore(js, fjs)
+
+      t._e = []
+      t.ready = function (f) {
+        t._e.push(f)
+      }
+
+      return t
+    })(document, 'script', 'twitter-wjs')
+  }
+</script>
+
+<script src="/js/3p/jquery.overlayScrollbars.min@1.13.1.js"></script>
+<script src="/js/header.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/theme.js"></script>
+
+    
+
+
+
+<script src="/js/scrollToTop.js"></script>
+
+
+
+
+<script src="/js/3p/html2canvas.min@1.0.0-rc.1.js"></script>
+<script src="/js/post.js" defer></script>
+
+
+    
+
+    
+  </body>
+</html>
