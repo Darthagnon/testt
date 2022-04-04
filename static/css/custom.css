@@ -2,6 +2,7 @@
   background-color: rgba(0, 0, 0, 0.6);
 }*/
 
+/* breaks article contents */
 /*@media screen and (max-width: 768px) {
   body {
     background-position: unset;
@@ -18,17 +19,17 @@
     0 0 0 1px rgb(10 10 10 / 2%) !important;
 }*/
 
-/* round corners of non-article boxes */
-/*.ui.attached.segment.dream-card {
+/* round corners of article boxes on homepage*/
+.ui.attached.segment.dream-card {
   border: none;
   border-radius: 1.5em;
   box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%),
     0 0 0 1px rgb(10 10 10 / 2%); /* Bulma Box */
-}*/
+}
 
 
-/* round corners of About Flip page, Disqus comments, etc. */
-/*.dream-back .ui.segment,
+/* round corners of About Flip page, Disqus comments, Article Contents, Article Indexes, fix Hugo Easy Gallery, etc. */
+.dream-back .ui.segment,
 .ui.segment.dream-posts-section,
 .ui.segment.dream-categories-section,
 .ui.segment.dream-tags-section,
@@ -40,6 +41,7 @@
     0 0 0 1px rgb(10 10 10 / 2%); /* Bulma Box 2 */
 }
 
+/* custom index for articles */
 /*.ui.segment.toc {
   padding: 0;
   background: none;
@@ -48,7 +50,7 @@
   float: right;
 }*/
 
-/* round corners of article boxes */
+/* round corners of article boxes on homepage */
 .dream-single .ui.segment {
   border-radius: 1.5em;
   box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%),
