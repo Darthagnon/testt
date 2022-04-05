@@ -22,7 +22,7 @@ unsafe = true
 
 [params]
   background = "#f7f7f7"
-  # backgroundImage = "/me/background.jpg"
+  backgroundImage = "/me/background.jpg"
   linkColor = "seagreen"
 
   # dark mode
@@ -45,7 +45,7 @@ unsafe = true
 
   # footerBottomText = ""
 
-  # rss = true
+  rss = true
 
   # utterancesRepo = ""
 
@@ -70,7 +70,7 @@ unsafe = true
   favicon = "/favicons/favicon.ico"
 
   # true: load 3rd-party JS/CSS from CDN; false: load instead from local files
-	CDNJS = false
+	CDNJS = true
   # highlightjs = true
   # highlightjsCDN = "https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/highlight.min.js"
   # highlightjsCDN = "js/3p/highlight.min.js"
@@ -92,12 +92,10 @@ unsafe = true
   # hasTwitterEmbed = true
   # reversePostAndAside = true
   # shareInAside = true
-  # fixedNav = true
+  fixedNav = true
   # collapsibleTags = true
   # collapseBySummary = true
 
-  # [params.advanced]
-  #   customCSS = ["css/custom.css"]
   #   customJSBefore = []
   #   customJS = []
 
