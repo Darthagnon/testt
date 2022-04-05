@@ -70,7 +70,7 @@ unsafe = true
   favicon = "/favicons/favicon.ico"
 
   # true: load 3rd-party JS/CSS from CDN; false: load instead from local files
-	CDNJS = true
+	CDNJS = false
   # highlightjs = true
   # highlightjsCDN = "https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/highlight.min.js"
   # highlightjsCDN = "js/3p/highlight.min.js"
@@ -103,8 +103,8 @@ unsafe = true
   #   jsDate = true
   #   jsDateFormat = "yyyy年MM月dd日"
   
-    [params.advanced]
-    customCSS = ["css/custom.css"] # files in the list will be loaded in order
+    #[params.advanced]
+    #customCSS = ["css/custom.css"] # files in the list will be loaded in order
   
   # required for search
    [outputs]

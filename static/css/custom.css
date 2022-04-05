@@ -1,3 +1,5 @@
+/* custom.css ripped from https://g1en.site/ */
+
 /*body.dark .os-viewport {
   background-color: rgba(0, 0, 0, 0.6);
 }*/
@@ -19,7 +21,7 @@
     0 0 0 1px rgb(10 10 10 / 2%) !important;
 }*/
 
-/* round corners of article boxes on homepage*/
+/* round corners of non-article boxes on homepage? */
 .ui.attached.segment.dream-card {
   border: none;
   border-radius: 1.5em;
@@ -28,7 +30,7 @@
 }
 
 
-/* round corners of About Flip page, Disqus comments, Article Contents, Article Indexes, fix Hugo Easy Gallery, etc. */
+/* round corners of About Flip page, Disqus comments, Article Indexes, fix Hugo Easy Gallery, etc. */
 .dream-back .ui.segment,
 .ui.segment.dream-posts-section,
 .ui.segment.dream-categories-section,
@@ -50,7 +52,7 @@
   float: right;
 }*/
 
-/* round corners of article boxes on homepage */
+/* round corners of article boxes? */
 .dream-single .ui.segment {
   border-radius: 1.5em;
   box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%),

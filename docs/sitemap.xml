@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://example.com/categories/</loc>
-    <lastmod>2022-03-25T00:00:00+00:00</lastmod>
+    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://example.com/tags/css/</loc>
     <lastmod>2019-03-11T00:00:00+00:00</lastmod>
@@ -17,10 +17,10 @@
     <loc>https://example.com/tags/markdown/</loc>
     <lastmod>2019-03-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.com/post/markdown-syntax/</loc>
+    <loc>https://example.com/posts/markdown-syntax/</loc>
     <lastmod>2019-03-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.com/post/</loc>
+    <loc>https://example.com/posts/</loc>
     <lastmod>2022-03-27T03:45:00+00:00</lastmod>
   </url><url>
     <loc>https://example.com/categories/syntax/</loc>
@@ -41,16 +41,16 @@
     <loc>https://example.com/tags/privacy/</loc>
     <lastmod>2022-03-27T03:45:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.com/post/rich-content/</loc>
+    <loc>https://example.com/posts/rich-content/</loc>
     <lastmod>2019-03-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.com/post/rich-content-offline/</loc>
+    <loc>https://example.com/posts/rich-content-offline/</loc>
     <lastmod>2022-03-27T03:45:00+00:00</lastmod>
   </url><url>
     <loc>https://example.com/tags/shortcodes/</loc>
     <lastmod>2022-03-27T03:45:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.com/post/placeholder-text/</loc>
+    <loc>https://example.com/posts/placeholder-text/</loc>
     <lastmod>2019-03-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://example.com/tags/text/</loc>
@@ -59,22 +59,7 @@
     <loc>https://example.com/tags/emoji/</loc>
     <lastmod>2019-03-05T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.com/post/emoji-support/</loc>
+    <loc>https://example.com/posts/emoji-support/</loc>
     <lastmod>2019-03-05T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://example.com/categories/docs/</loc>
-    <lastmod>2022-03-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://example.com/post/heg/</loc>
-    <lastmod>2017-03-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://example.com/post/heg-bug/</loc>
-    <lastmod>2017-03-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://example.com/tags/photoswipe/</loc>
-    <lastmod>2022-03-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://example.com/post/photoswipe/</loc>
-    <lastmod>2022-03-25T00:00:00+00:00</lastmod>
   </url>
 </urlset>
